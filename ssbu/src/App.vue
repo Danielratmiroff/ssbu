@@ -6,11 +6,12 @@
 
 <script>
 import Dashboard from './components/Dashboard.vue'
+// import Attributes from './components/Attributes.vue'
 
 export default {
   name: 'App',
   components: {
-    Dashboard
+    Dashboard,
   }
 }
 </script>
