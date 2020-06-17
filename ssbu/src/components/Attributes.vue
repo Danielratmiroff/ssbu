@@ -1,15 +1,12 @@
 <template>
-    <div>
-    
-        <button v-on:click="this.getAttr">
-           {{this.name}}
-        </button>
+    <div class="overlay">
+         
+        <img :src="this.char.img" />
         <ul v-for="(item, index) in this.charAttr" :key="index">
             <li>
                 {{ item.Name }} {{ item.Values[0].Value }}
             </li>
         </ul>
-    
     </div>
 </template>
 
@@ -18,8 +15,7 @@ export default {
     name: 'Attributes',
 
     props: {
-        id: null,
-        name: String
+        char: Object
     },
 
     data() {
@@ -28,21 +24,25 @@ export default {
         };
     },
 
+    mounted() {
+        this.getAttr(this.char.id)
+    },
+
     methods: {
-        async getAttr() {
+        async getAttr(id) {
             try {
-                
-                let fetch = await this.fetchAttr(this.id, 'ultimate')
+
+                let fetch = await this.fetchAttr(id, 'ultimate')
 
                 // if its not found in SSBU, use Smash4
                 if (!Array.isArray(fetch) || !fetch.length) {
-                    fetch = await this.fetchAttr(this.id, 'smash4')
+                    fetch = await this.fetchAttr(id, 'smash4')
                 }
 
                 this.charAttr = fetch.filter(name => {
                     return this.filterAttr(name.Name)
                 })
-                
+
                 //remove duplicates
                 this.charAttr = this.uniqueValue(this.charAttr);
 
@@ -90,6 +90,10 @@ export default {
                 return x != null
             })
             return unique
+        },
+
+        closeOverlay() {
+            this.$emit('closeDetails')
         }
 
     }
@@ -97,7 +101,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5rem 2rem 2rem 2rem;
+    background: white;
+}
+
 h3 {
     margin: 40px 0 0;
 }

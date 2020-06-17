@@ -2,22 +2,17 @@
     <div>
     
         <div v-for="item in this.chars" :key="item.id">
-            <img :src='item.img' />
-            <Attributes :id='item.id' :name='item.name' />
+            <div class="rounded-md h-12 w-full flex items-center justify-center bg-secondary-red my-4" @click="openDetails(item)">
+                <p>{{item.name}}</p>
+            </div>
+            <!-- <img class="rounded-md" :src='item.img' @click="openDetails(item)" /> <br> -->
         </div>
-    
     </div>
 </template>
 
 <script>
-import Attributes from './Attributes.vue'
-
 export default {
     name: 'Dashboard',
-
-    components: {
-        Attributes
-    },
 
     data() {
         return {
@@ -72,6 +67,14 @@ export default {
             }, []);
 
             return filteredArr
+        },
+
+        openDetails(id) {
+            this.$emit('openDetails', id);
+        },
+
+        openAbout() {
+            this.$emit('openAbout');
         }
     }
 }
@@ -79,21 +82,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-    margin: 40px 0 0;
-}
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
 </style>
