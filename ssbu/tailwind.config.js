@@ -8,16 +8,16 @@ module.exports = {
     colors: {
       primary: {
         100: '#ebf8ff',
-        300: '#90cdf4',
+        white: '#ffffff',
         500: '#4299e1',
         700: '#2b6cb0',
         900: '#2a4365',
       },
       secondary: {
         red: '#EE4555',
-        blue: '#4574EE',
-        purple: '#E045EE',
-        green: '#5DEE45',
+        blue: '#6080B2',
+        orange: '#E17A26',
+        purple: '#9C41B3',
         900: '#744210',
       },
       grey: {
