@@ -38,15 +38,19 @@ export default {
         return {
             detailsScreen: false,
             aboutScreen: false,
-            char: Object
-        }
+            char: {
+                id : '',
+                name : ''
+            }
+            }
     },
 
     methods: {
         loadDetails(item) {
-            this.detailsScreen = true
-            this.char.id = item.id
-            this.char.name = item.name
+            this.detailsScreen = true;
+            console.log(item)
+            this.char.id = item.id;
+            this.char.name = item.name;
         },
 
         unloadDetails() {

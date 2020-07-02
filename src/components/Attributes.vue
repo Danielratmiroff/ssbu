@@ -1,41 +1,34 @@
 <template>
-    <div class="overlay">
-        <div class="p-3 h-full">
-            <div>
-                <div class="flex relative h-12 mb-3 justify-between items-center">
-                    <div class="w-1/4 absolute" @click="closeOverlay()">
-                        Back
-                    </div>
-                    <p class="w-full text-center text-xl font-bold text-secondary-blue">
-                        {{this.char.name}}
-                    </p>
-                </div>
-                <!-- arreglar icono en el fondo -->
-                <div class="rounded-lg shadow-xl bg-secondary-red flex items-center justify-center relative bg-local ..." style="
-                            background-image: url('./assets/chars/iconbig.png');
-                            height:17rem">
-                    <img :src="getImg()" class="m-auto absolute" style="height:13rem" />
-                </div>
-                <div class="my-3 rounded-lg shadow-xl bg-secondary-red p-6">
-                    <p class="font-bold">
-                        Stats:
-                    </p>
-                    <ul v-for="(item, index) in this.charAttr" :key="index">
-                        <li class="my-5 p-3 font-bold rounded-lg bg-secondary-blue">
-                            <p class="mb-3 text-primary-white">
-                                {{ item.Name }}
-                                <!-- {{item.Values[0].Value}} -->
-                            </p>
-                            <div class="w-full rounded-lg">
-                                <progress-bar size="large" bar-color="linear-gradient(90deg, rgba(77,255,90,1) 0%, rgba(0,212,255,1) 78%)" :val="progressValue(item.Values[0].Value)" :max="300" />
-                            </div>
-                            <p class="mt-3 text-primary-white">
-                                {{item.Values[0].Value}}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+    <div class="overlay fixed h-full overflow-hidden">
+        <div class="px-4 bg-secondary-red relative">
+            <div class="flex relative justify-between items-center">
+                <img src="@/assets/arrow.svg" class="w-4 absolute" @click="closeOverlay()" />
+    
+                <p class="w-full text-center text-xl py-3 font-bold text-primary-white">
+                    {{this.char.name}}
+                </p>
             </div>
+            <img :src="getImg()" class="my-2 mx-auto relative pb-6 z-10 w-3/5" />
+            <img src="@/assets/iconbig.png" class="w-full absolute top-0" />
+        </div>
+        <div class="rounded-lg bg-primary-white py-6 px-5 relative -mt-3">
+            <p class="font-bold text-lg text-primary-blue">
+                Base stats
+            </p>
+            <ul v-for="(item, index) in this.charAttr" :key="index">
+                <li class="my-3 py-2">
+                    <p class="mb-2 text-base font-bold text-primary-dark">
+                        {{ item.Name }}
+    
+                    </p>
+                    <div class="w-full rounded-lg flex items-center">
+                        <p class="text-xs mr-3">
+                            {{item.Values[0].Value}}
+                        </p>
+                        <progress-bar size="large" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValue(item.Values[0].Value)" :max="300" style="width:100%;" />
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>

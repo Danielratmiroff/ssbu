@@ -8,7 +8,7 @@
                     <div class="overflow-hidden w-full h-12 rounded-md flex items-center justify-between" 
                     :class="renderBg(idx)">
                         <p class="text-left ml-6 text-primary-white">{{item.name}}</p>
-                        <img src="@/assets/chars/icon.png" class="h-full w-auto mr-4" />
+                        <img src="@/assets/icon.png" class="h-full w-auto mr-4" />
                     </div>
                 </div>
             </div>
