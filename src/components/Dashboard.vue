@@ -1,12 +1,11 @@
 <template>
     <div>
-        <div v-for="(item, idx) in this.chars" :key="item.id">
+        <div v-for="(item) in this.chars" :key="item.id">
             <div class="h-20 w-full flex items-center my-4" @click="openDetails(item)">
                 <div class="relative h-full w-full flex items-end">
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
                     <div class="overflow-hidden w-full rounded-md flex items-center justify-between" 
-                    :class="renderBg(idx)" 
-                    style="height:4rem;">
+                            style="height:4rem;background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%) ">
                         <p class="text-left text-lg font-bold ml-6 text-primary-white">{{item.name}}</p>
                         <img src="@/assets/icon.png" class="h-full w-auto mr-4" />
                     </div>

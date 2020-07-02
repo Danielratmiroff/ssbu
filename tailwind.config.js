@@ -13,7 +13,6 @@ module.exports = {
         dark: '#040941',
         white: '#ffffff',
         blue: '#1D6DE3',
-        grad: 'linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)',
         grey: '#F0F4FF',
       },
       secondary: {
