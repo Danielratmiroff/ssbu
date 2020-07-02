@@ -1,18 +1,17 @@
 <template>
     <div>
-    
         <div v-for="(item, idx) in this.chars" :key="item.id">
-            <div class="h-16 w-full flex items-center my-4" @click="openDetails(item)">
+            <div class="h-20 w-full flex items-center my-4" @click="openDetails(item)">
                 <div class="relative h-full w-full flex items-end">
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
-                    <div class="overflow-hidden w-full h-12 rounded-md flex items-center justify-between" 
-                    :class="renderBg(idx)">
-                        <p class="text-left ml-6 text-primary-white">{{item.name}}</p>
+                    <div class="overflow-hidden w-full rounded-md flex items-center justify-between" 
+                    :class="renderBg(idx)" 
+                    style="height:4rem;">
+                        <p class="text-left text-lg font-bold ml-6 text-primary-white">{{item.name}}</p>
                         <img src="@/assets/icon.png" class="h-full w-auto mr-4" />
                     </div>
                 </div>
             </div>
-            <!-- <img class="rounded-md" :src='item.img' @click="openDetails(item)" /> <br> -->
         </div>
     </div>
 </template>

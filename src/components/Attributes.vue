@@ -1,15 +1,15 @@
 <template>
     <div class="overlay fixed h-full overflow-hidden">
         <div class="px-4 bg-secondary-red relative">
-            <div class="flex relative justify-between items-center">
+            <div class="flex relative justify-between items-center z-50">
                 <img src="@/assets/arrow.svg" class="w-4 absolute" @click="closeOverlay()" />
     
                 <p class="w-full text-center text-xl py-3 font-bold text-primary-white">
                     {{this.char.name}}
                 </p>
             </div>
-            <img :src="getImg()" class="my-2 mx-auto relative pb-6 z-10 w-3/5" />
-            <img src="@/assets/iconbig.png" class="w-full absolute top-0" />
+                <img :src="getImg()" class="my-2 mx-auto relative pb-6 z-10 w-3/5" />
+                <img src="@/assets/iconbig.png" class="w-full absolute mt-12 top-0 left-0" />
         </div>
         <div class="rounded-lg bg-primary-white py-6 px-5 relative -mt-3">
             <p class="font-bold text-lg text-primary-blue">
@@ -137,16 +137,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.overlay {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    z-index: 10;
-}
 
 .vue-simple-progress,
 .vue-simple-progress-bar {

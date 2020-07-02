@@ -24,6 +24,12 @@ module.exports = {
         green: '#27AE60',
         blue: '#4A71FF',
       },
+      // spacing: {
+      //   sm: '8px',
+      //   md: '16px',
+      //   lg: '24px',
+      //   xl: '48px',
+      // },
       grey: {
         100: '#F0F4FF',
         300: '#faf089',
