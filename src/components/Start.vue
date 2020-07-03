@@ -1,5 +1,7 @@
 <template>
-    <div class="overlay bg-cover" :style="{'background-image': 'url(' + this.background + ')'}">
+    <div class="overlay bg-cover" 
+    style="background-position:bottom;"
+    :style="{'background-image': 'url(' + this.background + ')'}">
         <div class="relative h-full">
             <img src="@/assets/logo.png" class="pt-6 w-16 m-auto">
             <div class="font-bold px-4 text-center leading-tight text-primary-dark" style="font-size:2.3rem;">
@@ -7,7 +9,7 @@
             </div>
             <div class="absolute bottom-0 mb-16 w-full">
                 <p @click="openDashboard()" class="text-center w-2/4 m-auto border-primary-blue bg-primary-blue text-primary-white font-bold rounded-lg p-3 border-2 hover:bg-primary-dark cursor-pointer hover:border-primary-dark transition ease-in-out duration-300 ">
-                    Characters
+                    CHARACTERS
                 </p>
             </div>
         </div>
