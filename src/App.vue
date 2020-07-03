@@ -1,23 +1,22 @@
 <template>
     <div id="app">
         <div class="flex mb-3 h-16 py-2 px-3
-             mb-3 justify-between shadow-md items-center">
+                 mb-3 justify-between items-center">
             <img src="./assets/logo.png" class="max-h-full" />
             <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold">About</div>
         </div>
         <div class="wrap p-3 bg-primary-white w-full pt-1">
-    
             <!-- <nav>
-                            Router
-                                <router-link to="/">Home</router-link>
-                                <router-link to="/attributes">Attributes</router-link>
-                                <router-link to="/about">About</router-link>
-                            </nav>
-                            <router-view></router-view>
-                     -->
+                                Router
+                                    <router-link to="/">Home</router-link>
+                                    <router-link to="/attributes">Attributes</router-link>
+                                    <router-link to="/about">About</router-link>
+                                </nav>
+                                <router-view></router-view>
+                         -->
             <Start v-on:openDashboard="loadDashboard" v-if='this.start' />
             <About v-on:closeAbout="unloadAbout" v-if='this.aboutScreen' />
-            <Dashboard v-on:openDetails="loadDetails" v-on:openAbout='loadAbout' />
+            <Dashboard class="inactive" :class="{ isActive : dashboardActive}" v-on:openDetails="loadDetails" v-on:openAbout='loadAbout' />
             <Attributes v-on:closeDetails="unloadDetails" v-if='this.detailsScreen' :char='this.char' />
         </div>
     </div>
@@ -41,6 +40,7 @@ export default {
         return {
             detailsScreen: false,
             aboutScreen: false,
+            dashboardActive: false,
             start: true,
             char: {
                 id: '',
@@ -52,24 +52,29 @@ export default {
     methods: {
         loadDetails(item) {
             this.detailsScreen = true;
+            this.dashboardActive = false
             this.char.id = item.id;
             this.char.name = item.name;
         },
 
         unloadDetails() {
             this.detailsScreen = false
+            this.dashboardActive = true
         },
 
         loadAbout() {
             this.aboutScreen = true
+            this.dashboardActive = false
         },
 
         unloadAbout() {
             this.aboutScreen = false
+            this.dashboardActive = true
         },
 
         loadDashboard() {
             this.start = false
+            this.dashboardActive = true
         }
 
     }
@@ -82,5 +87,13 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
+}
+
+.inactive {
+    display: none;
+}
+
+.isActive {
+    display: block;
 }
 </style>

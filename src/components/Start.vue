@@ -1,5 +1,5 @@
 <template>
-    <div class="overlay fixed h-full overflow-hidden bg-center bg-cover" :style="{'background-image': 'url(' + this.background + ')'}">
+    <div class="overlay bg-cover" :style="{'background-image': 'url(' + this.background + ')'}">
         <div class="relative h-full">
             <img src="@/assets/logo.png" class="pt-6 w-16 m-auto">
             <div class="font-bold px-4 text-center leading-tight text-primary-dark" style="font-size:2.3rem;">
@@ -18,8 +18,6 @@
 export default {
     name: 'Start',
 
-    props: {},
-
     data() {
         return {
             background: require(`@/assets/wario.jpg`)
@@ -36,6 +34,7 @@ export default {
 
 <style>
 .overlay {
+    background-position: center;
     position: absolute;
     top: 0;
     height: 100%;

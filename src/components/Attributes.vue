@@ -1,5 +1,5 @@
 <template>
-    <div class="overlay fixed h-full overflow-hidden">
+    <div class="overlay">
         <div class="px-4 bg-secondary-red relative">
             <div class="flex relative justify-between items-center z-50">
                 <img src="@/assets/arrow.svg" class="w-4 absolute" @click="closeOverlay()" />

@@ -1,5 +1,11 @@
 <template>
     <div>
+        <p class="text-primary-dark font-bold my-3" style="font-size:1.45rem">
+            Character's Stats
+        </p>
+        <p class="text-primary-dark mb-6" >
+            Discover more about your favorite characters
+        </p>
         <div v-for="(item) in this.chars" :key="item.id">
             <div class="h-20 w-full flex items-center my-4" @click="openDetails(item)">
                 <div class="relative h-full w-full flex items-end">

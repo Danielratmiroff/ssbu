@@ -10,11 +10,10 @@ Vue.component('ProgressBar', ProgressBar)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-// Router disabled for now
 // const router = new VueRouter({
 //   routes: [
 //     { path: '/', component: Dashboard },
-//     { path: '/attributes', component: Attributes },
+//     { path: '/attributes/:id', component: Attributes },
 //   ]
 // })
 
@@ -24,6 +23,6 @@ new Vue({
   components: { 
     App,
     ProgressBar
-   },
+  },
   // router
 }).$mount('#app')
