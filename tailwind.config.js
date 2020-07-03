@@ -1,12 +1,10 @@
 module.exports = {
   theme: {
     screens: {
-      borderRadius: {
-        'xl' : '24px',
-      },
-      mobile: '320px',
-      tablet: '768px',
-      desktop: '1024px',
+      xs: '320px',
+      sm: '540px',
+      md: '768px',
+      lg: '1024px',
     },
     colors: {
       primary: {

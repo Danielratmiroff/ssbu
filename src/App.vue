@@ -1,9 +1,11 @@
 <template>
     <div id="app">
-        <div class="flex mb-3 h-16 py-2 px-3
+        <div class="flex mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
                  mb-3 justify-between items-center">
             <img src="./assets/logo.png" class="max-h-full" />
-            <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold">About</div>
+            <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold
+            md:text-lg
+            ">About</div>
         </div>
         <div class="wrap p-3 bg-primary-white w-full pt-1">
             <!-- <nav>
@@ -86,7 +88,10 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Nunito', cursive;
     font-size: 16px;
+    max-width:1260px;
+    margin: 0 auto
 }
 
 .inactive {

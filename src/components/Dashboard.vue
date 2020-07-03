@@ -1,19 +1,26 @@
 <template>
     <div>
-        <p class="text-primary-dark font-bold my-3" style="font-size:1.45rem">
+        <p class="text-primary-dark font-bold mt-3 mb-1 sm:ml-4" style="font-size:1.45rem">
             Character's Stats
         </p>
-        <p class="text-primary-dark mb-6" >
+        <p class="text-primary-dark mb-6 sm:ml-4">
             Discover more about your favorite characters
         </p>
-        <div v-for="(item) in this.chars" :key="item.id">
-            <div class="h-20 w-full flex items-center my-4" @click="openDetails(item)">
-                <div class="relative h-full w-full flex items-end">
+        <div class="flex w-full flex-col 
+            sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
+                ">
+            <div v-for="(item, idx) in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
+                sm:w-2/4 lg:w-2/6
+                " @click="openDetails(item)">
+                <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
-                    <div class="overflow-hidden w-full rounded-md flex items-center justify-between" 
-                            style="height:4rem;background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%) ">
-                        <p class="text-left text-lg font-bold ml-6 text-primary-white">{{item.name}}</p>
-                        <img src="@/assets/icon.png" class="h-full w-auto mr-4" />
+                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="renderBg(idx)"
+                    style="height:4.5rem;">
+                        <!-- background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)  -->
+                        <p class="font-bold text-primary-white" style='font-size:1.25rem;'>
+                            {{item.name}}
+                        </p>
+                        <img src="@/assets/icon.png" class="h-full w-auto" />
                     </div>
                 </div>
             </div>
