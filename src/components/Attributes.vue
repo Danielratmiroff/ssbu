@@ -2,20 +2,17 @@
     <div class="overlay">
         <div class="bg-secondary-red relative">
             <div class="px-4 py-2 sm:flex sm:flex-row-reverse sm:justify-evenly
-                                sm:max-w-lg m-auto
-                                ">
+                                        sm:max-w-lg m-auto
+                                        ">
                 <div class="flex relative justify-between items-center z-50">
                     <img src="@/assets/arrow.svg" class="w-6 absolute
-                                                    sm:hidden" 
-                                                    @click="closeOverlay()" />
-    
+                                                            sm:hidden" @click="closeOverlay()" />
                     <p class="w-full text-center py-3 font-bold text-primary-white char-title">
                         {{this.char.name}}
                     </p>
                 </div>
                 <img :src="getImg()" class="my-2 mx-auto relative pb-6 z-10 w-3/5
-                                            sm:w-1/3 sm:mx-0"
-                                            style="max-height:250px;object-fit:contain;" />
+                                                    sm:w-1/3 sm:mx-0" style="max-height:250px;object-fit:contain;" />
                 <img src="@/assets/iconbig.png" class="w-full absolute mt-12 top-0 left-0" />
             </div>
             <div class="rounded-t-lg bg-primary-white py-6 px-5 relative -mt-4">
@@ -24,11 +21,14 @@
                         <p class="font-bold text-lg text-primary-blue">
                             Base stats
                         </p>
-                        <p class="font-bold text-base text-primary-dark bg-tier-highplus inline-block rounded-md shadow-md px-2 py-1 text-center leading-tight">
-                            {{ getTierFromStore(this.char.name) }} <br> TIER
+                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
+                        :class="getTierBg(getTierFromStore(this.char.name))">
+                            {{ getTierFromStore(this.char.name) }}
+                            <span class="text-primary-white text-sm pl-2">
+                                         TIER
+                                         </span>
                         </p>
                     </div>
-    
     
                     <ul v-for="(item, index) in this.charAttr" :key="index">
                         <li class="my-2 py-1">
@@ -38,18 +38,18 @@
                             </p>
                             <div class="w-full rounded-lg flex items-center">
                                 <!-- <p class="text-xs mr-3">
-                                    {{item.Values[0].Value}}
-                                </p> -->
+                                            {{item.Values[0].Value}}
+                                        </p> -->
                                 <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValue(item.Values[0].Value)" :max="300" style="width:100%;" />
                             </div>
                         </li>
                     </ul>
                 </div>
                 <!-- <div class="mt-6">
-                    <p class="font-bold text-lg text-primary-blue">
-                        - Counters
-                    </p>
-                </div> -->
+                            <p class="font-bold text-lg text-primary-blue">
+                                - Counters
+                            </p>
+                        </div> -->
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@ export default {
         char: {
             id: '',
             name: '',
-            img: '',
+            img: ''
         }
     },
 
@@ -91,6 +91,10 @@ export default {
 
         getTierFromStore(char) {
             return this.getTier(char)
+        },
+
+        getTierBg(tier) {
+            return  `bg-tier-${tier}`
         },
 
         async getAttr(id) {
