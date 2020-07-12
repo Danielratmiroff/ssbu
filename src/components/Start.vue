@@ -1,5 +1,5 @@
 <template>
-    <div class="overlay bg-cover" 
+    <div class="full-overlay bg-cover" 
     style="background-position:bottom;"
     :style="{'background-image': 'url(' + this.background + ')'}">
         <div class="relative h-full">
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style>
-.overlay {
+.full-overlay {
     background-position: center;
     position: absolute;
     top: 0;

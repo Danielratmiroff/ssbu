@@ -27,12 +27,17 @@ module.exports = {
       //   lg: '24px',
       //   xl: '48px',
       // },
-      grey: {
-        100: '#F0F4FF',
-        300: '#faf089',
-        500: '#ecc94b',
-        700: '#b7791f',
-        900: '#744210',
+      tier: {
+        top: '#FF7F7F',
+        highplus: '#FFBF7F',
+        high: '#FFDF7F',
+        highminus: '#FFFF7F',
+        midplus: '#BFFF7F',
+        mid: '#7FFF7F',
+        midminus: '#7FFFFF',
+        lowplus: '#7FBFFF',
+        low: '#7F7FFF',
+        lowminus: '#BF7FBF',
       },
     },
     extend: {

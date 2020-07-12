@@ -1,15 +1,15 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
-import VueRouter from 'vue-router'
 import './assets/css/tailwind.css'
 import ProgressBar from 'vue-simple-progress'
-// import Dashboard from './components/Dashboard.vue';
-// import Attributes from './components/Attributes.vue';
+import { store } from './store/store'
+// import VueRouter from 'vue-router'
 
+Vue.use(Vuex)
 Vue.component('ProgressBar', ProgressBar)
-Vue.use(VueRouter)
-Vue.config.productionTip = false
 
+// Vue.use(VueRouter)
 // const router = new VueRouter({
 //   routes: [
 //     { path: '/', component: Dashboard },
@@ -20,6 +20,7 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  store,
   components: { 
     App,
     ProgressBar
