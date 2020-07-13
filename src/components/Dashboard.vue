@@ -3,8 +3,8 @@
         <p class="text-primary-dark font-bold mt-3 mb-1 sm:ml-4" style="font-size:1.45rem">
             Character's Stats
         </p>
-        <p class="text-primary-dark mb-4 sm:ml-4">
-            Discover more about your favorite characters 
+        <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
+            Discover more about your favorite characters
         </p>
         <div class="flex w-full flex-col 
                 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
@@ -16,7 +16,7 @@
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
                     <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="renderBg(idx)" style="height:4.5rem;">
                         <!-- background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)  -->
-                        <p class="font-bold text-primary-white" style='font-size:1.25rem;'>
+                        <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                             {{item.name}}
                         </p>
                         <img src="@/assets/icon.png" class="h-full w-auto" />
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'Dashboard',
 
@@ -45,7 +44,6 @@ export default {
     },
 
     methods: {
-
         async fetchChars(game) {
             try {
                 const response = await fetch("https://api.kuroganehammer.com/api/characters?game=" + game + "");
@@ -62,8 +60,8 @@ export default {
         },
 
         uniqueArr(obj1, obj2) {
-            let newObj = [...obj2, ...obj1]
 
+            let newObj = [...obj2, ...obj1]
             // Remove duplicates from array
             const filteredArr = newObj.reduce((acc, current) => {
                 const x = acc.find(item => item.id === current.id);
@@ -73,7 +71,21 @@ export default {
                     return acc;
                 }
             }, []);
-            return filteredArr
+
+            let sortedArr = this.sortChars(filteredArr)
+            return sortedArr
+        },
+
+        sortChars(sortArr) {
+
+            // Ascendent sorting
+            sortArr.sort(function(a, b) {
+                var textA = a.name.toUpperCase();
+                var textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
+
+            return sortArr
         },
 
         openDetails(id) {
@@ -84,6 +96,7 @@ export default {
             this.$emit('openAbout');
         },
 
+        // Doesn't work for now
         renderBg(elm) {
             let value = String;
             switch (Math.sqrt(elm)) {

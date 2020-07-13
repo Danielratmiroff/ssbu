@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Attributes',
@@ -71,9 +71,6 @@ export default {
 
 
     computed: {
-
-        ...mapState(['joker']),
-
         ...mapGetters(['getTier'])
     },
 

@@ -14,12 +14,12 @@ module.exports = {
         grey: '#F0F4FF',
       },
       secondary: {
-        red: '#D71C1C',
+        red: '#cc1b1b',
         lightblue: '#3DADF2',
-        orange: '#FF9619',
-        purple: '#7F6DF2',
-        green: '#27AE60',
-        blue: '#4A71FF',
+        orange: '#f28f18',
+        purple: '#7463e0',
+        green: '#26a35b',
+        blue: '#436af7',
       },
       // spacing: {
       //   sm: '8px',
@@ -34,7 +34,6 @@ module.exports = {
         D: '#3DADF2',
         E: '#4A71FF',
         F: '#7FBFFF',
-        low: '#7F6DF2',
       },
     },
     extend: {
