@@ -38,31 +38,6 @@ export default {
         };
     },
 
-    computed: {
-        bgClass: function(elm) {
-            let value = String;
-            switch (Math.sqrt(elm)) {
-                case 0:
-                    value = 'red'
-                    break;
-                case 1:
-                    value = 'blue'
-                    break;
-                case 2:
-                    value = 'orange'
-                    break;
-                case 3:
-                    value = 'purple'
-                    break;
-                default:
-                    value = 'red'
-                    break;
-            }
-            console.log(value)
-            return `bg-secondary-${value}`
-        }
-    },
-
     mounted: async function() {
         const totalUltimate = await this.fetchChars('ultimate');
         const totalSmash4 = await this.fetchChars('smash4');
@@ -70,6 +45,17 @@ export default {
     },
 
     methods: {
+        bgClass(elm) {
+            return {
+                'bg-secondary-red' : elm === 0 ? true : null,
+                'bg-secondary-blue' : elm === 1 ? true : null,
+                'bg-secondary-green' : elm === 2 ? true : null,
+                'bg-secondary-orange' : elm === 3 ? true : null,
+                'bg-secondary-lightblue' : elm === 4 ? true : null,
+                'bg-secondary-purple' : elm === 5 ? true : null,
+            }
+        },
+
         async fetchChars(game) {
             try {
                 const response = await fetch("https://api.kuroganehammer.com/api/characters?game=" + game + "");

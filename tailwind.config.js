@@ -14,12 +14,12 @@ module.exports = {
         grey: '#F0F4FF',
       },
       secondary: {
-        1: '#cc1b1b',
-        2: '#3DADF2',
-        3: '#f28f18',
-        4: '#7463e0',
-        5: '#26a35b',
-        6: '#436af7',
+        red: '#cc1b1b',
+        lightblue: '#3DADF2',
+        orange: '#f28f18',
+        purple: '#7463e0',
+        green: '#26a35b',
+        blue: '#436af7',
       },
       // spacing: {
       //   sm: '8px',
