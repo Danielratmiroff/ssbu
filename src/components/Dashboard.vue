@@ -7,14 +7,15 @@
             Discover more about your favorite characters
         </p>
         <div class="flex w-full flex-col 
-                sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
-                    ">
+                        sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
+                            ">
             <div v-for="(item, idx) in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
-                    sm:w-2/4 lg:w-2/6
-                    " @click="openDetails(item)">
+                            sm:w-2/4 lg:w-2/6
+                            " @click="openDetails(item)">
                 <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
-                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="renderBg(idx)" style="height:4.5rem;">
+                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" 
+                    :class="bgClass(idx)" style="height:4.5rem;">
                         <!-- background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)  -->
                         <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                             {{item.name}}
@@ -33,8 +34,33 @@ export default {
 
     data() {
         return {
-            chars: Object
+            chars: Object,
         };
+    },
+
+    computed: {
+        bgClass: function(elm) {
+            let value = String;
+            switch (Math.sqrt(elm)) {
+                case 0:
+                    value = 'red'
+                    break;
+                case 1:
+                    value = 'blue'
+                    break;
+                case 2:
+                    value = 'orange'
+                    break;
+                case 3:
+                    value = 'purple'
+                    break;
+                default:
+                    value = 'red'
+                    break;
+            }
+            console.log(value)
+            return `bg-secondary-${value}`
+        }
     },
 
     mounted: async function() {
@@ -94,29 +120,6 @@ export default {
 
         openAbout() {
             this.$emit('openAbout');
-        },
-
-        // Doesn't work for now
-        renderBg(elm) {
-            let value = String;
-            switch (Math.sqrt(elm)) {
-                case 0:
-                    value = 'red'
-                    break;
-                case 1:
-                    value = 'blue'
-                    break;
-                case 2:
-                    value = 'orange'
-                    break;
-                case 3:
-                    value = 'purple'
-                    break;
-                default:
-                    value = 'red'
-                    break;
-            }
-            return `bg-secondary-${value}`
         },
 
         getImg() {
