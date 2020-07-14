@@ -91,7 +91,14 @@ export default {
         },
 
         getTierBg(tier) {
-            return  `bg-tier-${tier}`
+            return  {
+                'bg-secondary-red': tier === 'A' ? true : null,
+                'bg-secondary-orange': tier === 'B' ? true : null,
+                'bg-secondary-green': tier === 'C' ? true : null,
+                'bg-secondary-lightblue': tier === 'D' ? true : null,
+                'bg-secondary-blue': tier === 'E' ? true : null,
+                'bg-secondary-purple': tier === 'F' ? true : null,
+                }
         },
 
         async getAttr(id) {

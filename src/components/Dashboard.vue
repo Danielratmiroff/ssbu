@@ -7,15 +7,14 @@
             Discover more about your favorite characters
         </p>
         <div class="flex w-full flex-col 
-                        sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
-                            ">
-            <div v-for="(item, idx) in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
-                            sm:w-2/4 lg:w-2/6
-                            " @click="openDetails(item)">
+                    sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
+                        ">
+            <div v-for="item in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
+                        sm:w-2/4 lg:w-2/6
+                        " @click="openDetails(item)">
                 <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
                     <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
-                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" 
-                    :class="bgClass(idx)" style="height:4.5rem;">
+                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="bgClass()" style="height:4.5rem;">
                         <!-- background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)  -->
                         <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                             {{item.name}}
@@ -29,6 +28,9 @@
 </template>
 
 <script>
+//Dynamic bg color
+let bgNumber = 0;
+
 export default {
     name: 'Dashboard',
 
@@ -45,14 +47,18 @@ export default {
     },
 
     methods: {
-        bgClass(elm) {
+        bgClass() {
+
+            bgNumber++
+            if (bgNumber > 5) { bgNumber = 0 }
+
             return {
-                'bg-secondary-red' : elm === 0 ? true : null,
-                'bg-secondary-blue' : elm === 1 ? true : null,
-                'bg-secondary-green' : elm === 2 ? true : null,
-                'bg-secondary-orange' : elm === 3 ? true : null,
-                'bg-secondary-lightblue' : elm === 4 ? true : null,
-                'bg-secondary-purple' : elm === 5 ? true : null,
+                'bg-secondary-blue': bgNumber === 0 ? true : null,
+                'bg-secondary-green': bgNumber === 1 ? true : null,
+                'bg-secondary-orange': bgNumber === 2 ? true : null,
+                'bg-secondary-lightblue': bgNumber === 3 ? true : null,
+                'bg-secondary-purple': bgNumber === 4 ? true : null,
+                'bg-secondary-red': bgNumber === 5 ? true : null,
             }
         },
 
