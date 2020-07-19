@@ -45,8 +45,9 @@ export default {
             dashboardActive: false,
             start: true,
             char: {
-                id: '',
-                name: ''
+                id: null,
+                name: null,
+                bgColor: null,
             }
         }
     },
@@ -54,31 +55,32 @@ export default {
     methods: {
         loadDetails(item) {
             this.detailsScreen = true;
-            this.dashboardActive = false
+            this.dashboardActive = false;
+            // Pass char values to children
             this.char.id = item.id;
             this.char.name = item.name;
+            this.char.bgColor = item.bgColor;
         },
 
         unloadDetails() {
-            this.detailsScreen = false
-            this.dashboardActive = true
+            this.detailsScreen = false;
+            this.dashboardActive = true;
         },
 
         loadAbout() {
-            this.aboutScreen = true
-            this.dashboardActive = false
+            this.aboutScreen = true;
+            this.dashboardActive = false;
         },
 
         unloadAbout() {
-            this.aboutScreen = false
-            this.dashboardActive = true
+            this.aboutScreen = false;
+            this.dashboardActive = true;
         },
 
         loadDashboard() {
-            this.start = false
-            this.dashboardActive = true
+            this.start = false;
+            this.dashboardActive = true;
         }
-
     }
 }
 </script>

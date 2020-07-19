@@ -7,19 +7,19 @@
             Discover more about your favorite characters
         </p>
         <div class="flex w-full flex-col 
-                    sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
-                        ">
-            <div v-for="item in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
-                        sm:w-2/4 lg:w-2/6
-                        " @click="openDetails(item)">
+                            sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
+                                ">
+            <div v-for="(item, idx) in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
+                                sm:w-2/4 lg:w-2/6
+                                " @click="openDetails(item)">
                 <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
-                    <img :src="getImg()" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-3 z-1" />
-                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="bgClass()" style="height:4.5rem;">
+                    <img :src="getImg(idx)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
+                    <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="bgClass(item)" style="height:4.5rem;">
                         <!-- background:linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)  -->
                         <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                             {{item.name}}
                         </p>
-                        <img src="@/assets/icon.png" class="h-full w-auto" />
+                        <img src="@/assets/icon.png" class="h-full w-auto -mr-2"/>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,6 @@
 
 <script>
 //Dynamic bg color
-let bgNumber = 0;
 
 export default {
     name: 'Dashboard',
@@ -43,22 +42,22 @@ export default {
     mounted: async function() {
         const totalUltimate = await this.fetchChars('ultimate');
         const totalSmash4 = await this.fetchChars('smash4');
-        this.chars = this.uniqueArr(totalSmash4, totalUltimate)
+        let mergeArrays = this.uniqueArr(totalSmash4, totalUltimate);
+        let sortArr = this.sortChars(mergeArrays);
+        // Adding bg colors to Chars object
+        let addBgColors = this.addBgColors(sortArr);
+        this.chars = addBgColors;
     },
 
     methods: {
-        bgClass() {
-
-            bgNumber++
-            if (bgNumber > 5) { bgNumber = 0 }
-
+        bgClass({ bgColor }) {
             return {
-                'bg-secondary-blue': bgNumber === 0 ? true : null,
-                'bg-secondary-green': bgNumber === 1 ? true : null,
-                'bg-secondary-orange': bgNumber === 2 ? true : null,
-                'bg-secondary-lightblue': bgNumber === 3 ? true : null,
-                'bg-secondary-purple': bgNumber === 4 ? true : null,
-                'bg-secondary-red': bgNumber === 5 ? true : null,
+                'bg-secondary-blue': bgColor === 0 ? true : null,
+                'bg-secondary-green': bgColor === 1 ? true : null,
+                'bg-secondary-orange': bgColor === 2 ? true : null,
+                'bg-secondary-lightblue': bgColor === 3 ? true : null,
+                'bg-secondary-purple': bgColor === 4 ? true : null,
+                'bg-secondary-red': bgColor === 5 ? true : null,
             }
         },
 
@@ -78,7 +77,6 @@ export default {
         },
 
         uniqueArr(obj1, obj2) {
-
             let newObj = [...obj2, ...obj1]
             // Remove duplicates from array
             const filteredArr = newObj.reduce((acc, current) => {
@@ -89,21 +87,28 @@ export default {
                     return acc;
                 }
             }, []);
-
-            let sortedArr = this.sortChars(filteredArr)
-            return sortedArr
+            return filteredArr
         },
 
         sortChars(sortArr) {
-
             // Ascendent sorting
             sortArr.sort(function(a, b) {
                 var textA = a.name.toUpperCase();
                 var textB = b.name.toUpperCase();
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });
-
             return sortArr
+        },
+
+        addBgColors(elm) {
+            let bgNumber = 0;
+           let bgColors = elm.map(elm => {
+                if (bgNumber > 5) { bgNumber = 0 }
+                elm.bgColor = bgNumber;
+             bgNumber++;
+            return elm
+            })
+            return bgColors
         },
 
         openDetails(id) {
@@ -114,14 +119,15 @@ export default {
             this.$emit('openAbout');
         },
 
-        getImg() {
-            // works when all images are in place
-            // names need to be adjusted to fit the image's path (spaces and so on)
-            // ----->  return require(`@/assets/chars/${this.chars[idx].name.toLowerCase()}.png`)
-
-            // for now use the following:
-            return require(`@/assets/chars/jokersmall.png`)
+        // Find a way to share this code with attributes
+        // Right now its repeating itself
+        // Need to define a better data structure for chars in order to be able to fetch is easily
+        getImg(elm) {
+            let charName = this.chars[elm].name;
+            let cleanName = charName.replace(/\s/g, "").toLowerCase().replace(/&/g, 'and').replace(/\./g, "");
+            return require(`@/assets/chars/${cleanName}.png`)
         }
     }
 }
 </script>
+ 
