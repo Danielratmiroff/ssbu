@@ -67,7 +67,7 @@ export const store = new Vuex.Store({
         pit : 'F',
         richter : 'E',
         ridley : 'E',
-        rOB : 'B',
+        rob : 'B',
         robin : 'F',
         rosalinaandluma : 'D',
         roy : 'B',
