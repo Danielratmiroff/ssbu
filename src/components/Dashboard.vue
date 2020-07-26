@@ -6,12 +6,12 @@
         <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
             Discover more about your favorite characters
         </p>
+        <Searchbar :charList="this.chars" />
+    
         <div class="flex w-full flex-col 
-                            sm:flex-row sm:flex-wrap sm:items-center sm:justify-center
-                                ">
+                    sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
             <div v-for="(item, idx) in this.chars" :key="item.id" class="h-24 w-full flex items-center my-2 md:my-3
-                                sm:w-2/4 lg:w-2/6
-                                " @click="openDetails(item)">
+                            sm:w-2/4 lg:w-2/6" @click="openDetails(item)">
                 <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
                     <img :src="getImg(idx)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                     <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between" :class="bgClass(item)" style="height:4.5rem;">
@@ -19,7 +19,7 @@
                         <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                             {{item.name}}
                         </p>
-                        <img src="@/assets/icon.png" class="h-full w-auto -mr-2"/>
+                        <img src="@/assets/icon.png" class="h-full w-auto -mr-2" />
                     </div>
                 </div>
             </div>
@@ -28,10 +28,15 @@
 </template>
 
 <script>
-//Dynamic bg color
+import Searchbar from './Searchbar.vue'
 
 export default {
     name: 'Dashboard',
+
+    components: {
+        Searchbar
+
+    },
 
     data() {
         return {
@@ -102,11 +107,11 @@ export default {
 
         addBgColors(elm) {
             let bgNumber = 0;
-           let bgColors = elm.map(elm => {
+            let bgColors = elm.map(elm => {
                 if (bgNumber > 5) { bgNumber = 0 }
                 elm.bgColor = bgNumber;
-             bgNumber++;
-            return elm
+                bgNumber++;
+                return elm
             })
             return bgColors
         },

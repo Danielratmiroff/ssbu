@@ -2,7 +2,7 @@
     <div id="app">
         <div class="flex mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
                  mb-3 justify-between items-center">
-            <img src="./assets/logo.png" class="max-h-full" />
+            <img @click="loadDashboard()" src="./assets/logo.png" class="max-h-full" />
             <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold
             md:text-lg
             ">About</div>
@@ -44,22 +44,16 @@ export default {
             aboutScreen: false,
             dashboardActive: false,
             start: true,
-            char: {
-                id: null,
-                name: null,
-                bgColor: null,
-            }
+            char: {}
         }
     },
 
     methods: {
-        loadDetails(item) {
+        loadDetails(elm) {
             this.detailsScreen = true;
             this.dashboardActive = false;
             // Pass char values to children
-            this.char.id = item.id;
-            this.char.name = item.name;
-            this.char.bgColor = item.bgColor;
+            this.char = elm;
         },
 
         unloadDetails() {
@@ -87,7 +81,6 @@ export default {
 
 <style lang="scss">
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Nunito', cursive;
