@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+Vue.use(VueAxios, axios);
+Vue.axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
 
 export const store = new Vuex.Store({
     state: {
@@ -100,7 +104,10 @@ export const store = new Vuex.Store({
             ShortHop : 17.34,
             AirJump : 50.51,
             Gravity : 0.23
-        }
+        },
+
+        chars : [],
+
     },
     getters: {
         getTier: (state) => (name) => {
@@ -109,6 +116,52 @@ export const store = new Vuex.Store({
         
         maxValue: (state) => (elm) => {
             return state.value[elm]
+        },
+        
+        everyChar: (state) => (elm) => {
+            return state.chars[elm]
+        },
+    
+        searchChar: (state) => (elm) => {
+            return state.chars[elm]
+        }
+    },
+
+    mutations: {
+        storeUniqueChars(state, all) {
+            // Remove duplicates from array
+            const uniqueChars = all.reduce((acc, current) => {
+                const x = acc.find(item => item.OwnerId === current.OwnerId);
+                if (!x) {
+                    return acc.concat([current]);
+                } else {
+                    return acc;
+                }
+            }, []);
+            
+            state.chars = uniqueChars;
+        }
+    },
+    
+    actions: {
+        loadChars({commit}) {
+            const ult = "https://api.kuroganehammer.com/api/characters?game=ultimate";
+            const smash = "https://api.kuroganehammer.com/api/characters?game=smash4";
+            
+            const ultGet = axios.get(ult);
+            const smashGet = axios.get(smash);
+            
+            axios.all([ultGet, smashGet]).then(axios.spread((...responses) => {
+            
+                const ultResponse = responses[0].data;
+                const smashResponse = responses[1].data;
+                const all = [...ultResponse, ...smashResponse]
+
+                commit('storeUniqueChars', all);
+            })
+          ).catch(error => {
+            throw new Error(`API ${error}`);
+          });
         }
     }
 })

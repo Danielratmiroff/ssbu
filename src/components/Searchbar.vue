@@ -32,11 +32,14 @@ export default {
             const list = this.charList;
             const filterList = list.filter(obj => {
                 let name = obj.name.toLowerCase();
-                if (name === value || name.includes(value)) {
-                    return name;
-                }
+                return name === value ? name : 
+                       name.includes(value) ? name : null;
             })
-            console.log(filterList);
+            this.filterBySearch(filterList)
+        },
+
+        filterBySearch(elm) {
+            this.$emit('filterBySearch', elm)
         }
     }
 }
