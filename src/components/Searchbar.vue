@@ -2,10 +2,10 @@
     <div class="searchBox w-full h-8 rounded-md border border-primary-grey flex justify-between 
             sm:ml-4 lg:w-1/3
             ">
-        <input type="search" placeholder="Search your character" v-model="charInput"
+        <input type="search" placeholder="Search your character" v-model="input"
         class="pl-3 focus:outline-none text-sm w-full mr-3">
 
-        <div @click="search(charInput)" class="bg-primary-grey h-full flex justify-center w-12">
+        <div @click="search(input)" class="bg-primary-grey h-full flex justify-center w-12">
             <img src="@/assets/magnifier.png" class="w-6 p-1 object-contain"/>
         </div>        
         
@@ -13,34 +13,31 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
     name: 'Searchbar',
 
-    props: {
-        charList : null
+    computed: {
+        ...mapState(['charsAll'])  
     },
 
     data() {
         return {
-            charInput : ''
+            input : ''
         }
     },
 
     methods: {
         search(value) {
-            const list = this.charList;
+            const list = this.charsAll;
             const filterList = list.filter(obj => {
-                let name = obj.name.toLowerCase();
-                return name === value ? name : 
-                       name.includes(value) ? name : null;
+                const name = obj.DisplayName;
+                return name.includes(value) ? name : null;
             })
-            this.filterBySearch(filterList)
+          
+            this.$emit('filterBySearch', filterList)
         },
-
-        filterBySearch(elm) {
-            this.$emit('filterBySearch', elm)
-        }
     }
 }
 </script>

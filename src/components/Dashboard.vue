@@ -6,7 +6,7 @@
         <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
             Discover more about your favorite characters
         </p>
-        <Searchbar v-on:filterBySearch="searchChar" :charList="this.allChars" />
+        <Searchbar v-on:filterBySearch="searchChar(elm)" />
         <Characters v-on:openDetails="openAttributes" :filterByChar='this.filter' />
     
     </div>
@@ -37,7 +37,7 @@ export default {
     },
 
     created() {
-      this.$store.dispatch('loadChars');
+        this.$store.dispatch('loadChars');
     },
 
 
