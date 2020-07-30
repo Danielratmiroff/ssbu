@@ -15,7 +15,6 @@
 <script>
 import Searchbar from './Searchbar.vue'
 import Characters from './Characters.vue'
-import { mapState } from 'vuex';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -34,8 +33,6 @@ export default {
     },
 
     computed: {
-        ...mapState(['chars']),
-        ...mapGetters(['everyChar']),
         ...mapGetters(['searchChar'])
     },
 
@@ -43,9 +40,6 @@ export default {
       this.$store.dispatch('loadChars');
     },
 
-    mounted() {
-    //    console.log("Users--->",this.getChar)       
-    },
 
     methods: {
         searchChar(elm) {

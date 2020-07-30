@@ -5,93 +5,93 @@ import VueAxios from "vue-axios";
 
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
-Vue.axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
 
 export const store = new Vuex.Store({
     state: {
         tier : {
-            banjoandkazooie : 'D',
-            bayonetta : 'F',
-            blyeth : 'E',
-            bowser : 'C',
-            bowserjr : 'F',
-            byleth : 'E',
-            captainfalcon : 'E',
-            chrom : 'B',
-            cloud : 'C',
-            corrin : 'F',
-            daisy : 'A',
-            darkpit : 'F',
-            pokemontrainer : 'B',
-            darksamus : 'C',
-            diddykong : 'D',
-            donkeykong : 'F',
-            drmario : 'F',
-            duckhunt : 'D',
-            falco : 'D',
-            fox : 'B',
-            ganondorf : 'F',
-            greninja : 'B',
-            hero : 'D',
-            iceclimbers : 'E',
-            ike : 'D',
-            incineroar : 'F',
-            inkling : 'B',
-            isabelle : 'F',
-            jigglypuff : 'F',
-            joker : 'A',
-            ken : 'C',
-            kingdedede : 'F',
-            kingkrool : 'F',
-            kirby : 'F',
-            link : 'C',
-            littlemac : 'F',
-            lucario : 'E',
-            lucas : 'D',
-            lucina : 'B',
-            luigi : 'D',
-            mario : 'B',
-            marth : 'D',
-            megaman : 'B',
-            metaknight : 'E',
-            mewtwo : 'F',
-            miibrawler : 'E',
-            miiswordfighter : 'E',
-            miigunner : 'F',
-            minmin : 'D',
-            gameandwatch : 'B',
-            ness : 'C',
-            olimar : 'B',
-            pacman : 'B',
-            palutena : 'A',
-            peach : 'A',
-            pichu : 'C',
-            pikachu : 'A',
-            piranhaplant : 'E',
-            pit : 'F',
-            richter : 'E',
-            ridley : 'E',
-            rob : 'B',
-            robin : 'F',
-            rosalinaandluma : 'D',
-            roy : 'B',
-            ryu : 'C',
-            samus : 'C',
-            sheik : 'E',
-            shulk : 'B',
-            simon : 'E',
-            snake : 'B',
-            sonic : 'C',
-            terry : 'C',
-            toonlink : 'D',
-            villager : 'E',
-            wario : 'B',
-            wiifittrainer : 'D',
-            wolf : 'B',
-            yoshi : 'C',
-            youngLink : 'C',
-            zelda : 'E',
-            zerosuitsamus : 'A',
+            Banjoandkazooie : 'D',
+            Bayonetta : 'F',
+            Blyeth : 'E',
+            Bowser : 'C',
+            BowserJr : 'F',
+            Byleth : 'E',
+            Captainfalcon : 'E',
+            Chrom : 'B',
+            Cloud : 'C',
+            Charizard : 'B',
+            Corrin : 'F',
+            Daisy : 'A',
+            Darkpit : 'F',
+            Pokemontrainer : 'B',
+            Darksamus : 'C',
+            Diddykong : 'D',
+            Donkeykong : 'F',
+            Drmario : 'F',
+            Duckhunt : 'D',
+            Falco : 'D',
+            Fox : 'B',
+            Ganondorf : 'F',
+            Greninja : 'B',
+            Hero : 'D',
+            Iceclimbers : 'E',
+            Ike : 'D',
+            Incineroar : 'F',
+            Inkling : 'B',
+            Isabelle : 'F',
+            Jigglypuff : 'F',
+            Joker : 'A',
+            Ken : 'C',
+            Kingdedede : 'F',
+            Kingkrool : 'F',
+            Kirby : 'F',
+            Link : 'C',
+            Littlemac : 'F',
+            Lucario : 'E',
+            Lucas : 'D',
+            Lucina : 'B',
+            Luigi : 'D',
+            Mario : 'B',
+            Marth : 'D',
+            Megaman : 'B',
+            Metaknight : 'E',
+            Mewtwo : 'F',
+            Miibrawler : 'E',
+            Miiswordfighter : 'E',
+            Miigunner : 'F',
+            Minmin : 'D',
+            Gameandwatch : 'B',
+            Ness : 'C',
+            Olimar : 'B',
+            Pacman : 'B',
+            Palutena : 'A',
+            Peach : 'A',
+            Pichu : 'C',
+            Pikachu : 'A',
+            Piranhaplant : 'E',
+            Pit : 'F',
+            Richter : 'E',
+            Ridley : 'E',
+            Rob : 'B',
+            Robin : 'F',
+            Rosalinaandluma : 'D',
+            Roy : 'B',
+            Ryu : 'C',
+            Samus : 'C',
+            Sheik : 'E',
+            Shulk : 'B',
+            Simon : 'E',
+            Snake : 'B',
+            Sonic : 'C',
+            Terry : 'C',
+            Toonlink : 'D',
+            Villager : 'E',
+            Wario : 'B',
+            Wiifittrainer : 'D',
+            Wolf : 'B',
+            Yoshi : 'C',
+            YoungLink : 'C',
+            Zelda : 'E',
+            Zerosuitsamus : 'A',
         },
         value : {
             Weight : 135,
@@ -106,7 +106,9 @@ export const store = new Vuex.Store({
             Gravity : 0.23
         },
 
-        chars : [],
+        charsUnique : [],
+        charsSorted : [],
+        charsAll : [],
 
     },
     getters: {
@@ -117,18 +119,14 @@ export const store = new Vuex.Store({
         maxValue: (state) => (elm) => {
             return state.value[elm]
         },
-        
-        everyChar: (state) => (elm) => {
-            return state.chars[elm]
-        },
-    
+            
         searchChar: (state) => (elm) => {
             return state.chars[elm]
         }
     },
 
     mutations: {
-        storeUniqueChars(state, all) {
+        STORE_UNIQUE(state, all) {
             // Remove duplicates from array
             const uniqueChars = all.reduce((acc, current) => {
                 const x = acc.find(item => item.OwnerId === current.OwnerId);
@@ -138,13 +136,62 @@ export const store = new Vuex.Store({
                     return acc;
                 }
             }, []);
-            
-            state.chars = uniqueChars;
-        }
+
+            state.charsUnique = uniqueChars;
+        },
+
+        STORE_SORTED(state) {
+            // Sort and store array of characters 
+            const all = state.charsUnique;
+            const allSorted = all.sort(function(a, b) {
+                const textA = a.Name.toUpperCase();
+                const textB = b.Name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });   
+        
+            state.charsSorted = allSorted
+        },
+
+        STORE_BG(state) {
+            // Add background colors to characters
+            const all = state.charsSorted
+            let count = 0;
+            const addColors = all.map(elm => {
+                switch(count) {
+                    case 0:
+                        count++;
+                        elm.Background = 'bg-secondary-blue';
+                        break;
+                    case 1:
+                        count++;
+                        elm.Background = 'bg-secondary-green';
+                        break;
+                    case 2:
+                        count++;
+                        elm.Background = 'bg-secondary-orange';
+                        break;
+                    case 3:
+                        count++;
+                        elm.Background = 'bg-secondary-lightblue';
+                        break;
+                    case 4:
+                        count++;
+                        elm.Background = 'bg-secondary-purple';
+                        break;
+                    default:
+                        count = 0;
+                        elm.Background = 'bg-secondary-red';
+                        break;
+                }
+                return elm
+            })
+
+            state.charsAll = addColors
+        },
     },
     
     actions: {
-        loadChars({commit}) {
+        async loadChars({commit}) {
             const ult = "https://api.kuroganehammer.com/api/characters?game=ultimate";
             const smash = "https://api.kuroganehammer.com/api/characters?game=smash4";
             
@@ -157,11 +204,15 @@ export const store = new Vuex.Store({
                 const smashResponse = responses[1].data;
                 const all = [...ultResponse, ...smashResponse]
 
-                commit('storeUniqueChars', all);
+                commit('STORE_UNIQUE', all);
+                commit('STORE_SORTED')
+                commit('STORE_BG')
+
             })
           ).catch(error => {
             throw new Error(`API ${error}`);
           });
-        }
+        },
+        
     }
 })

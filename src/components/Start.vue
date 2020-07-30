@@ -22,7 +22,7 @@ export default {
 
     data() {
         return {
-            background: require(`@/assets/wario.jpg`)
+            background: require(`@/assets/fondo.png`)
         };
     },
 

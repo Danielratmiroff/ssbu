@@ -1,32 +1,38 @@
 <template>
     <div class="overlay">
-        <div class="relative" :class="bgClass(char)">
+        <div class="relative" :class="this.char.Background">
+    
             <div class="px-4 py-2 sm:flex sm:flex-row-reverse sm:justify-evenly
-                                                        sm:max-w-lg m-auto
-                                                        ">
+                            sm:max-w-lg m-auto
+                            ">
                 <div class="flex relative justify-between items-center z-50">
                     <img src="@/assets/arrow.svg" class="w-6 absolute
-                            sm:hidden" @click="closeOverlay()" />
+                                sm:hidden" @click="closeOverlay()" />
                     <p class="w-full text-center py-3 font-bold text-primary-white char-title">
-                        {{this.char.name}}
+                        {{this.char.Name}}
                     </p>
                 </div>
-                <img :src="getImg(this.cleanName)" class="my-2 mx-auto relative pb-6 z-10 w-3/5
-                                                            sm:w-1/3 sm:mx-0" style="max-height:250px;object-fit:contain;" />
+                <img :src="getImg(this.char.Name)" class="my-2 mx-auto relative pb-6 z-10 w-3/5
+                                                                sm:w-1/3 sm:mx-0" style="max-height:250px;object-fit:contain;" />
                 <img src="@/assets/iconbig.png" class="w-full absolute mt-12 top-0 left-0" />
+    
             </div>
             <div class="rounded-t-lg bg-primary-white py-6 px-5 relative -mt-4">
+    
                 <div class="sm:max-w-lg m-auto">
                     <div class="flex items-center justify-between">
+    
                         <p class="font-bold text-lg text-primary-blue">
                             Base stats
                         </p>
-                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" :class="getTierBg(getTierFromStore(this.cleanName))">
+    
+                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" :class="getTierBg(getTier(this.char.Name))
+                            ">
                             <!-- Get Tier Text -->
-                            {{ getTierFromStore(this.cleanName) }}
+                            {{ getTier(this.char.Name) }}
                             <span class="text-primary-white text-sm pl-2">
-                                                TIER
-                                            </span>
+                                    TIER
+                                </span>
                         </p>
                     </div>
     
@@ -37,18 +43,19 @@
                             </p>
                             <div class="w-full rounded-lg flex items-center">
                                 <!-- <p class="text-xs mr-3">
-                                            {{item.Values[0].Value}}
-                                        </p> -->
+                                                {{item.Values[0].Value}}
+                                            </p> -->
                                 <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValue(item)" :max="100" style="width:100%;" />
                             </div>
                         </li>
                     </ul>
+    
                 </div>
                 <!-- <div class="mt-6">
-                                            <p class="font-bold text-lg text-primary-blue">
-                                                - Counters
-                                            </p>
-                                        </div> -->
+                        <p class="font-bold text-lg text-primary-blue">
+                            - Counters
+                        </p>
+                    </div> -->
             </div>
         </div>
     </div>
@@ -56,18 +63,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import axios from "axios";
 
 export default {
     name: 'Attributes',
 
     props: {
-        char: {
-            id: null,
-            name: null,
-            bgColor: null,
-        }
+        char: Object
     },
-
 
     computed: {
         ...mapGetters(['getTier']),
@@ -77,32 +80,83 @@ export default {
     data() {
         return {
             charAttr: Array,
-            cleanName: this.char.name.replace(/\s/g, "")
-                .toLowerCase()
-                .replace(/&/g, 'and')
-                .replace(/\./g, "")
-        };
+        }
     },
 
-    mounted() {
-        // Get attributes from Char
-        this.getAttr(this.char.id)
+    created() {
+        this.getAttr(this.char.OwnerId)
     },
 
     methods: {
-        getTierFromStore(char) {
-            return this.getTier(char)
+
+        closeOverlay() {
+            this.$emit('closeDetails')
         },
 
-        bgClass({ bgColor }) {
-            return {
-                'bg-secondary-blue': bgColor === 0 ? true : null,
-                'bg-secondary-green': bgColor === 1 ? true : null,
-                'bg-secondary-orange': bgColor === 2 ? true : null,
-                'bg-secondary-lightblue': bgColor === 3 ? true : null,
-                'bg-secondary-purple': bgColor === 4 ? true : null,
-                'bg-secondary-red': bgColor === 5 ? true : null,
+        async getAttr(id) {
+
+            const ultimate = await this.fetchAttr(id, 'ultimate')
+            const isFound = !Array.isArray(ultimate)
+
+            // if its not found in SSBU, use Smash4
+            const attr = isFound ? ultimate :
+                await this.fetchAttr(id, 'smash4')
+
+            // Get selected attributes 
+            const attrFilter = attr.filter(name => {
+                return this.filterAttr(name.Name)
+            })
+
+            // Remove duplicates
+            const attrUnique = this.uniqueAttr(attrFilter);
+
+            this.charAttr = attrUnique;
+        },
+
+        async fetchAttr(id, game) {
+            try {
+                const url = "https://api.kuroganehammer.com/api/characters/" + id + "/characterattributes?game=" + game + "";
+                const urlGet = await axios.get(url);
+                return urlGet.data
+            } catch (err) {
+                console.log(err, 'Error with Attributes')
             }
+
+        },
+
+        filterAttr(elm) {
+            switch (elm) {
+                case 'AirSpeed':
+                case 'AirFriction':
+                case 'FallSpeed':
+                case 'FullHop':
+                case 'Weight':
+                case 'WalkSpeed':
+                case 'RunSpeed':
+                case 'Gravity':
+                    return elm
+                default:
+                    return null;
+            }
+        },
+
+        uniqueAttr(elm) {
+            // Would be cool to reuse filtering function from store.js
+            const unique = elm.reduce((acc, current) => {
+                const x = acc.find(item => item.Name === current.Name);
+                if (!x) {
+                    return acc.concat([current]);
+                } else {
+                    return acc;
+                }
+            }, []);
+
+            return unique
+        },
+
+        getImg(elm) {
+            const name = elm.toLowerCase();
+            return require(`@/assets/chars/${name}.png`)
         },
 
         getTierBg(tier) {
@@ -116,83 +170,11 @@ export default {
             }
         },
 
-        async getAttr(id) {
-            try {
-                let fetch = await this.fetchAttr(id, 'ultimate')
-                // if its not found in SSBU, use Smash4
-                if (!Array.isArray(fetch) || !fetch.length) {
-                    fetch = await this.fetchAttr(id, 'smash4')
-                }
-                // Get selected attributes 
-                this.charAttr = fetch.filter(name => {
-                    return this.filterAttr(name.Name)
-                })
-                // remove duplicates
-                this.charAttr = this.uniqueValue(this.charAttr);
-
-            } catch (err) { console.log('Error with Attributes') }
-        },
-
-        async fetchAttr(id, game) {
-            let response = await fetch("https://api.kuroganehammer.com/api/characters/" +
-                id +
-                "/characterattributes?game=" + game + "");
-            let attrJson = await response.json();
-            return attrJson
-        },
-
-        filterAttr(elm) {
-            let returnValue;
-            switch (elm) {
-                case 'AirSpeed':
-                case 'AirFriction':
-                case 'FallSpeed':
-                case 'FullHop':
-                case 'Weight':
-                case 'WalkSpeed':
-                case 'RunSpeed':
-                case 'Gravity':
-                    returnValue = elm
-                    break;
-                default:
-                    returnValue = null;
-            }
-            return returnValue
-        },
-
-        uniqueValue(elm) {
-            let arr = []
-            let filter = elm.map(x => {
-                if (!arr.includes(x.Name)) {
-                    arr.push(x.Name)
-                    return x
-                }
-            })
-
-            // remove empty slots
-            let unique = filter.filter(x => {
-                return x != null
-            })
-            return unique
-        },
-
-        closeOverlay() {
-            this.$emit('closeDetails')
-        },
-
-        getImg(elm) {
-            return require(`@/assets/chars/${elm}.png`)
-        },
-
         progressValue({ Name, Values }) {
             const statValue = Values[0].Value
             const maxValue = this.maxValue(Name)
-            const statPercentaje = this.calcPercentaje(statValue, maxValue)
-            return statPercentaje
-        },
-
-        calcPercentaje(num, max) {
-            return (num * 100) / max
+            const percentaje = (statValue * 100) / maxValue
+            return percentaje
         }
     }
 }

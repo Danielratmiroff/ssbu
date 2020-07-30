@@ -4,6 +4,8 @@ import App from './App.vue'
 import './assets/css/tailwind.css'
 import ProgressBar from 'vue-simple-progress'
 import { store } from './store/store'
+import axios from "axios";
+import VueAxios from "vue-axios";
 // import VueRouter from 'vue-router'
 
 Vue.use(Vuex)
@@ -23,7 +25,9 @@ new Vue({
   store,
   components: { 
     App,
-    ProgressBar
+    ProgressBar,
+    axios,
+    VueAxios
   },
   // router
 }).$mount('#app')
