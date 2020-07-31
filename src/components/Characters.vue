@@ -32,7 +32,7 @@ export default {
     name: 'Characters',
 
     props: {
-        charList: Array
+        charList: null
     },
     
     methods: {

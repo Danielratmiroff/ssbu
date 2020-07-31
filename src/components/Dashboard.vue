@@ -31,11 +31,9 @@ export default {
         };
     },
     
-    created() {
-        this.$store.dispatch('loadChars')
-        .then(() => {
-            this.setCharList();
-        });
+    async created() {
+        await this.$store.dispatch('loadChars')
+        this.setCharList();
     },
 
     computed: {

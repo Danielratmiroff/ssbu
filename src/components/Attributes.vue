@@ -29,7 +29,7 @@
                         <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" :class="getTierBg(getTier(this.char.Name))
                             ">
                             <!-- Get Tier Text -->
-                            {{ getTier(this.char.Name) }}
+                            {{ fetchTier(this.char.Name) }}
                             <span class="text-primary-white text-sm pl-2">
                                     TIER
                                 </span>
@@ -157,6 +157,11 @@ export default {
         getImg(elm) {
             const name = elm.toLowerCase();
             return require(`@/assets/chars/${name}.png`)
+        },
+
+        fetchTier(elm) {
+            const name = elm.toLowerCase();
+            this.getTier(name);
         },
 
         getTierBg(tier) {
