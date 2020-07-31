@@ -26,13 +26,14 @@
                             Base stats
                         </p>
     
-                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" :class="getTierBg(getTier(this.char.Name))
+                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
+                        :class="getTierBg(fetchTier(this.char.Name))
                             ">
                             <!-- Get Tier Text -->
                             {{ fetchTier(this.char.Name) }}
                             <span class="text-primary-white text-sm pl-2">
-                                    TIER
-                                </span>
+                                TIER
+                            </span>
                         </p>
                     </div>
     
@@ -161,7 +162,7 @@ export default {
 
         fetchTier(elm) {
             const name = elm.toLowerCase();
-            this.getTier(name);
+            return this.getTier(name);
         },
 
         getTierBg(tier) {

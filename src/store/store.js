@@ -9,7 +9,7 @@ Vue.use(VueAxios, axios);
 export const store = new Vuex.Store({
     state: {
         tier : {
-            banjoandkazooie : 'D',
+            banjokazooie : 'D',
             bayonetta : 'F',
             blyeth : 'E',
             bowser : 'C',
@@ -59,7 +59,7 @@ export const store = new Vuex.Store({
             miiswordfighter : 'E',
             miigunner : 'F',
             minmin : 'D',
-            gameandwatch : 'B',
+            mrgamewatch : 'B',
             ness : 'C',
             olimar : 'B',
             pacman : 'B',
@@ -73,7 +73,7 @@ export const store = new Vuex.Store({
             ridley : 'E',
             rob : 'B',
             robin : 'F',
-            rosalinaandluma : 'D',
+            rosalinaluma : 'D',
             roy : 'B',
             ryu : 'C',
             samus : 'C',
@@ -93,6 +93,7 @@ export const store = new Vuex.Store({
             zelda : 'E',
             zerosuitsamus : 'A',
         },
+
         value : {
             Weight : 135,
             AirSpeed : 1.344,
@@ -119,7 +120,6 @@ export const store = new Vuex.Store({
         maxValue: (state) => (elm) => {
             return state.value[elm]
         },
-        
     },
 
     mutations: {
