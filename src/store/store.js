@@ -119,10 +119,7 @@ export const store = new Vuex.Store({
         maxValue: (state) => (elm) => {
             return state.value[elm]
         },
-            
-        searchChar: (state) => (elm) => {
-            return state.chars[elm]
-        }
+        
     },
 
     mutations: {

@@ -1,5 +1,7 @@
 <template>
-    <div class="searchBox w-full h-8 rounded-md border border-primary-grey flex justify-between 
+    <div 
+    v-on:keyup.enter="search(input)" 
+    class="searchBox w-full h-8 rounded-md border border-primary-grey flex justify-between 
             sm:ml-4 lg:w-1/3
             ">
         <input type="search" placeholder="Search your character" v-model="input"
@@ -30,10 +32,12 @@ export default {
 
     methods: {
         search(value) {
+            const string = value.toLowerCase();
             const list = this.charsAll;
+
             const filterList = list.filter(obj => {
-                const name = obj.DisplayName;
-                return name.includes(value) ? name : null;
+                const name = obj.DisplayName.toLowerCase();
+                return name.includes(string) ? name : null;
             })
           
             this.$emit('filterBySearch', filterList)

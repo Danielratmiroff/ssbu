@@ -2,7 +2,7 @@
     <div>
         <div class="flex w-full flex-col 
                 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
-            <div v-for="item in this.charsAll" :key="item.OwnerId" class="h-24 w-full flex items-center my-2 md:my-3
+            <div v-for="item in this.charList" :key="item.OwnerId" class="h-24 w-full flex items-center my-2 md:my-3
                                 sm:w-2/4 lg:w-2/6" @click="openDetails(item)
                 ">
                 <div class="relative h-full w-full sm:mx-3 md:mx-4 flex items-end">
@@ -27,34 +27,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
     name: 'Characters',
 
     props: {
-        filterByChar: null
-    },
-
-    created() {
-      this.$store.dispatch('loadChars');
+        charList: Array
     },
     
-    computed: {
-        ...mapState(['charsAll']),
-    },
-
     methods: {
-
-        sortChars(sortArr) {
-            // Ascendent sorting
-            sortArr.sort(function(a, b) {
-                var textA = a.name.toUpperCase();
-                var textB = b.name.toUpperCase();
-                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-            });
-            return sortArr
-        },
         
         openDetails(item) {
             this.$emit('openDetails', item);

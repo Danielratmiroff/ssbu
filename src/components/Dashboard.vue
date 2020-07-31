@@ -6,8 +6,8 @@
         <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
             Discover more about your favorite characters
         </p>
-        <Searchbar v-on:filterBySearch="searchChar(elm)" />
-        <Characters v-on:openDetails="openAttributes" :filterByChar='this.filter' />
+        <Searchbar v-on:filterBySearch="searchChar" />
+        <Characters v-on:openDetails="openAttributes" :charList='this.showList' />
     
     </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import Searchbar from './Searchbar.vue'
 import Characters from './Characters.vue'
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
     name: 'Dashboard',
@@ -27,27 +27,28 @@ export default {
 
     data() {
         return {
-            allChars: '',
-            filter: Object
+            showList: Array
         };
+    },
+    
+    created() {
+        this.$store.dispatch('loadChars')
+        .then(() => {
+            this.setCharList();
+        });
     },
 
     computed: {
-        ...mapGetters(['searchChar'])
+        ...mapState(['charsAll'])
     },
-
-    created() {
-        this.$store.dispatch('loadChars');
-    },
-
 
     methods: {
         searchChar(elm) {
-            this.filter = elm;
+            this.showList = elm;
         },
 
-        setCharList(elm) {
-            this.allChars = elm;
+        setCharList() {
+            this.showList = this.charsAll;
         },
 
         openAttributes(item) {
