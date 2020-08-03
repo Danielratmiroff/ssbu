@@ -8,6 +8,24 @@ Vue.use(VueAxios, axios);
 
 export const store = new Vuex.Store({
     state: {
+        chars : {
+            76 : {
+                name : 'banjokazooie',
+                tier : 'D',
+                attr : {
+                    AirFriction : '0.014',
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    WalkSpeed : '1.06',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
+            }
+        },
+
         tier : {
             banjokazooie : 'D',
             bayonetta : 'F',
@@ -115,6 +133,28 @@ export const store = new Vuex.Store({
     getters: {
         getTier: (state) => (name) => {
             return state.tier[name]
+        },
+        
+        getStats: (state) => (id) => {
+            return state.chars[id].attr
+        },
+        
+        getCounters: (state) => (id, list) => {
+            const counterNames = state.chars[id][list];
+            const charsAll = state.charsAll;
+
+           // Would be cool to reuse filtering function from store.js
+           // Create a reduce function to be reused since this is repeating itself multiple times
+           const counters = counterNames.reduce((acc , current) => {
+                const names = charsAll.find(elm => elm.Name === current);
+                if (names) { 
+                    return acc.concat(names)
+                 }
+                else { 
+                    return acc
+                }
+            }, []);
+            return counters
         },
         
         maxValue: (state) => (elm) => {

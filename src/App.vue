@@ -73,6 +73,7 @@ export default {
 
         loadDashboard() {
             this.start = false;
+            this.detailsScreen = false;
             this.dashboardActive = true;
         }
     }

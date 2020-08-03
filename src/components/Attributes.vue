@@ -3,17 +3,17 @@
         <div class="relative" :class="this.char.Background">
     
             <div class="px-4 py-2 sm:flex sm:flex-row-reverse sm:justify-evenly
-                            sm:max-w-lg m-auto
-                            ">
+                                sm:max-w-lg m-auto
+                                ">
                 <div class="flex relative justify-between items-center z-50">
                     <img src="@/assets/arrow.svg" class="w-6 absolute
-                                sm:hidden" @click="closeOverlay()" />
+                                    sm:hidden" @click="closeOverlay()" />
                     <p class="w-full text-center py-3 font-bold text-primary-white char-title">
-                        {{this.char.Name}}
+                        {{this.char.DisplayName}}
                     </p>
                 </div>
                 <img :src="getImg(this.char.Name)" class="my-2 mx-auto relative pb-6 z-10 w-3/5
-                                                                sm:w-1/3 sm:mx-0" style="max-height:250px;object-fit:contain;" />
+                                                        sm:w-1/3 sm:mx-0" style="max-height:250px;object-fit:contain;" />
                 <img src="@/assets/iconbig.png" class="w-full absolute mt-12 top-0 left-0" />
     
             </div>
@@ -27,81 +27,110 @@
                         </p>
     
                         <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
-                        :class="getTierBg(fetchTier(this.char.Name))
+                            :class="getTierBg(fetchTier(this.char.Name))
                             ">
-                            <!-- Get Tier Text -->
                             {{ fetchTier(this.char.Name) }}
                             <span class="text-primary-white text-sm pl-2">
                                 TIER
                             </span>
                         </p>
                     </div>
-    
-                    <ul v-for="(item, index) in this.charAttr" :key="index">
-                        <li class="my-2 py-1">
-                            <p class="mb-2 text-sm text-primary-dark">
-                                {{ item.Name }}
-                            </p>
-                            <div class="w-full rounded-lg flex items-center">
-                                <!-- <p class="text-xs mr-3">
-                                                {{item.Values[0].Value}}
-                                            </p> -->
-                                <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValue(item)" :max="100" style="width:100%;" />
-                            </div>
-                        </li>
-                    </ul>
+                    
+                    <div v-if="foundInAPI">
+                        <ul v-for="(item, index) in this.charAttr" :key="index">
+                            <li class="my-2 py-1">
+                                <p class="mb-2 text-sm text-primary-dark">
+                                    {{ item.Name }}
+                                </p>
+                                <div class="w-full rounded-lg flex items-center">
+                                    <!-- <p class="text-xs mr-3">
+                                        {{item.Values[0].Value}}
+                                    </p> -->
+                                    <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueAPI(item)" :max="100" style="width:100%;" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                        <ul v-for="(value, attr) in this.charAttr" :key="attr">
+                            <li class="my-2 py-1">
+                                <p class="mb-2 text-sm text-primary-dark">
+                                    {{ attr }}
+                                </p>
+                                <div class="w-full rounded-lg flex items-center">
+                                    <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueStore(attr, value)" :max="100" style="width:100%;" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                <Counters :id="this.char.OwnerId" /> 
     
                 </div>
-                <!-- <div class="mt-6">
-                        <p class="font-bold text-lg text-primary-blue">
-                            - Counters
-                        </p>
-                    </div> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import axios from "axios";
+import Counters from './Counters.vue'
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Attributes',
+    
+    components: {
+        Counters
+    },
 
     props: {
         char: Object
     },
 
     computed: {
-        ...mapGetters(['getTier']),
-        ...mapGetters(['maxValue'])
+        ...mapGetters(['getTier', 'maxValue', 'getStats'])
     },
 
     data() {
         return {
             charAttr: Array,
+            foundInAPI : true
+        }
+    },
+
+    watch: {
+        char: {
+            immediate: true, 
+            handler (elm) {
+                this.getAttr(elm.OwnerId);
+            }
         }
     },
 
     created() {
-        this.getAttr(this.char.OwnerId)
+        this.getAttr(this.char.OwnerId);
     },
 
     methods: {
 
         closeOverlay() {
-            this.$emit('closeDetails')
+            this.$emit('closeDetails');
         },
 
         async getAttr(id) {
-
             const ultimate = await this.fetchAttr(id, 'ultimate')
             const isFound = !Array.isArray(ultimate)
 
             // if its not found in SSBU, use Smash4
-            const attr = isFound ? ultimate :
-                await this.fetchAttr(id, 'smash4')
+            const attr = isFound ? ultimate : await this.fetchAttr(id, 'smash4')
+
+            // if API doesn't return any attributes
+            if (attr.length < 1) {
+                this.foundInAPI = false;
+                this.charAttr = this.getStats(id);
+                return
+            }
 
             // Get selected attributes 
             const attrFilter = attr.filter(name => {
@@ -176,11 +205,21 @@ export default {
             }
         },
 
-        progressValue({ Name, Values }) {
+        progressValueAPI({ Name, Values }) {
             const statValue = Values[0].Value
             const maxValue = this.maxValue(Name)
-            const percentaje = (statValue * 100) / maxValue
+            const percentaje = this.calcPercentaje(statValue, maxValue)
             return percentaje
+        },
+
+        progressValueStore(attrName, statValue) {
+            const maxValue = this.maxValue(attrName)
+            const percentaje = this.calcPercentaje(statValue, maxValue)
+            return percentaje
+        },
+
+        calcPercentaje(a, b) {
+            return (a * 100) / b
         }
     }
 }

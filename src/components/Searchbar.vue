@@ -1,13 +1,14 @@
 <template>
     <div 
     v-on:keyup.enter="search(input)" 
-    class="searchBox w-full h-8 rounded-md border border-primary-grey flex justify-between 
-            sm:ml-4 lg:w-1/3
+    class="searchBox h-8 rounded-md border border-primary-grey flex justify-between 
+            sm:mx-4 lg:w-1/3
             ">
         <input type="search" placeholder="Search your character" v-model="input"
         class="pl-3 focus:outline-none text-sm w-full mr-3">
 
-        <div @click="search(input)" class="bg-primary-grey h-full flex justify-center w-12">
+        <div @click="search(input)" class="bg-primary-grey h-full flex justify-center w-12
+            sm:-ml-4">
             <img src="@/assets/magnifier.png" class="w-6 p-1 object-contain"/>
         </div>        
         
