@@ -70,11 +70,14 @@ export const store = new Vuex.Store({
             const uniqueChars = all.reduce((acc, current) => {
                 const x = acc.find(item => item.OwnerId === current.OwnerId);
                 if (!x) {
+                    console.log(current.DisplayName, current.OwnerId)
                     return acc.concat([current]);
                 } else {
                     return acc;
                 }
             }, []);
+
+            
 
             state.charsUnique = uniqueChars;
         },

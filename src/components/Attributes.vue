@@ -39,13 +39,15 @@
                     <div v-if="foundInAPI">
                         <ul v-for="(item, idx) in this.charAttr" :key="idx">
                             <li class="my-2 py-1 relative">
-                                <p class="mb-2 text-sm text-primary-dark inline-block" >
+                                <div class="mb-2 text-sm flex items-center text-primary-dark" >
                                     {{ item.Name }}
-                                    <span @click="hintClick(idx)" class="hover:cursor-pointer">
-                                        (?)
-                                    </span>
+                                  <div @click="hintClick(idx)" class="ml-2 text-center text-grey-50 font-bold border bg-grey-10 border-solid border-primary-grey hover:cursor-pointer"
+                                        style="border-radius:50%;height:18px;width:18px;font-size:0.725rem;"
+                                    >
+                                        ?
+                                    </div>
                                     <Hints v-if="hintActive && idx == hintIndex" :attr="item.Name" v-on:closeHint="hintClose" />
-                                </p>
+                                </div>
                                 <div class="w-full rounded-lg flex items-center">
                                     <!-- <p class="text-xs mr-3">
                                         {{item.Values[0].Value}}

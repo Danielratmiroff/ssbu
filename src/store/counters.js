@@ -93,6 +93,28 @@ export const counters = new Vuex.Store({
             10 : {
                 name : 'DonkeyKong',
                 tier : 'D',
+                attr : {
+                    FallSpeed : '1.63',
+                    FullHop : '34',
+                    Weight : '127',
+                    RunSpeed : '1.873',
+                    Gravity : '0.085',
+                },
+                isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
+            },
+            
+            
+            4 : {
+                name : 'Captain Falcon',
+                tier : 'D',
+                attr : {
+                    FallSpeed : '1.865',
+                    FullHop : '37.31',
+                    Weight : '104',
+                    RunSpeed : '2.552',
+                    Gravity : '0.0769',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -100,6 +122,13 @@ export const counters = new Vuex.Store({
             11 : {
                 name : 'DrMario',
                 tier : 'D',
+                attr : {
+                    FallSpeed : '1.5',
+                    FullHop : '30.8805',
+                    Weight : '98',
+                    RunSpeed : '1.397792',
+                    Gravity : '0.087',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -107,6 +136,13 @@ export const counters = new Vuex.Store({
             12 : {
                 name : 'DuckHunt',
                 tier : 'D',
+                attr : {
+                    FallSpeed : '1.65',
+                    FullHop : '34',
+                    Weight : '86',
+                    RunSpeed : '1.793',
+                    Gravity : '0.076',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -142,6 +178,13 @@ export const counters = new Vuex.Store({
             75 : {
                 name : 'Hero',
                 tier : 'D',
+                attr : {
+                    FallSpeed : '1.57',
+                    FullHop : '29',
+                    Weight : '101',
+                    RunSpeed : '1.84',
+                    Gravity : '0.094',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -184,6 +227,13 @@ export const counters = new Vuex.Store({
             74 : {
                 name : 'Joker',
                 tier : 'D',
+                 attr : {
+                    FullHop : '32.5',
+                    Gravity : '0.127',
+                    RunSpeed : '2.06',
+                    FallSpeed : '1.63',
+                    Weight : '93',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -268,6 +318,13 @@ export const counters = new Vuex.Store({
             29 : {
                 name : 'MegaMan',
                 tier : 'D',
+                attr : {
+                    FullHop : '32.8',
+                    Gravity : '0.107',
+                    RunSpeed : '1.602',
+                    FallSpeed : '1.8',
+                    Weight : '102',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -282,6 +339,13 @@ export const counters = new Vuex.Store({
             32 : {
                 name : 'MiiBrawler',
                 tier : 'D',
+                attr : {
+                    FullHop : '35',
+                    Gravity : '0.169',
+                    RunSpeed : '1.92',
+                    FallSpeed : '1.92',
+                    Weight : '94',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -289,6 +353,13 @@ export const counters = new Vuex.Store({
             33 : {
                 name : 'MiiGunner',
                 tier : 'D',
+                attr : {
+                    FullHop : '30.9',
+                    Gravity : '0.098',
+                    RunSpeed : '1.37',
+                    FallSpeed : '1.45',
+                    Weight : '104',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -296,6 +367,13 @@ export const counters = new Vuex.Store({
             34 : {
                 name : 'MiiSwordfighter',
                 tier : 'D',
+                attr : {
+                    FullHop : '28.3',
+                    Gravity : '0.106',
+                    RunSpeed : '1.58',
+                    FallSpeed : '1.55',
+                    Weight : '100',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -464,6 +542,13 @@ export const counters = new Vuex.Store({
             78 : {
                 name : 'Terry',
                 tier : 'D',
+                attr : {
+                    FullHop : '27',
+                    Gravity : '0.09',
+                    RunSpeed : '1.72',
+                    FallSpeed : '1.48',
+                    Weight : '108',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -471,6 +556,13 @@ export const counters = new Vuex.Store({
             52 : {
                 name : 'ToonLink',
                 tier : 'D',
+                attr : {
+                    FullHop : '33.8',
+                    Gravity : '0.081',
+                    RunSpeed : '1.906',
+                    FallSpeed : '1.38',
+                    Weight : '91',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -492,6 +584,13 @@ export const counters = new Vuex.Store({
             55 : {
                 name : 'WiiFitTrainer',
                 tier : 'D',
+                attr : {
+                    FullHop : '35.6',
+                    Gravity : '0.09',
+                    RunSpeed : '1.866',
+                    FallSpeed : '1.3',
+                    Weight : '96',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -499,6 +598,13 @@ export const counters = new Vuex.Store({
             68 : {
                 name : 'Wolf',
                 tier : 'D',
+                attr : {
+                    FullHop : '32.02',
+                    Gravity : '0.13',
+                    RunSpeed : '1.54',
+                    FallSpeed : '1.8',
+                    Weight : '92',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -506,6 +612,13 @@ export const counters = new Vuex.Store({
             79 : {
                 name : 'YoungLink',
                 tier : 'D',
+                attr : {
+                    FullHop : '33.66',
+                    Gravity : '0.096',
+                    RunSpeed : '1.749',
+                    FallSpeed : '1.8',
+                    Weight : '88',
+                },
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
             },
@@ -528,11 +641,9 @@ export const counters = new Vuex.Store({
                 name : 'banjokazooie',
                 tier : 'D',
                 attr : {
-                    AirFriction : '0.014',
                     FallSpeed : '1.76',
                     FullHop : '29.8',
                     Weight : '106',
-                    WalkSpeed : '1.06',
                     RunSpeed : '2.18',
                     Gravity : '0.11',
                 },

@@ -1,6 +1,11 @@
 <template>
-    <div class="full-overlay bg-cover" 
-    style="background-position:bottom;"
+<div>
+    <div class="full-overlay bg-contain" 
+    style="
+    background-position:center center;
+    background:no-repeat;
+    background-color:#FFB4CB;
+    z-index:999;"
     :style="{'background-image': 'url(' + this.background + ')'}">
         <div class="relative h-full">
             <img src="@/assets/logo.png" class="pt-6 w-16 m-auto">
@@ -14,6 +19,7 @@
             </div>
         </div>
     </div>
+    </div>
 </template>
 
 <script>
@@ -22,7 +28,7 @@ export default {
 
     data() {
         return {
-            background: require(`@/assets/wario.jpg`)
+            background: require(`@/assets/kirby.svg`)
         };
     },
 
