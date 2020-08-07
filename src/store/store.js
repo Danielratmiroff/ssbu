@@ -2,117 +2,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { counters } from "./counters.js";
 
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
 
 export const store = new Vuex.Store({
+    strict: true,
+    modules: {
+        counters
+    },
+
     state: {
-        chars : {
-            76 : {
-                name : 'banjokazooie',
-                tier : 'D',
-                attr : {
-                    AirFriction : '0.014',
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    WalkSpeed : '1.06',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
-                },
-                isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker'],
-                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool']
-            }
-        },
-
-        tier : {
-            banjokazooie : 'D',
-            bayonetta : 'F',
-            blyeth : 'E',
-            bowser : 'C',
-            bowserJr : 'F',
-            byleth : 'E',
-            captainfalcon : 'E',
-            chrom : 'B',
-            cloud : 'C',
-            charizard : 'B',
-            corrin : 'F',
-            daisy : 'A',
-            darkpit : 'F',
-            pokemontrainer : 'B',
-            darksamus : 'C',
-            diddykong : 'D',
-            donkeykong : 'F',
-            drmario : 'F',
-            duckhunt : 'D',
-            falco : 'D',
-            fox : 'B',
-            ganondorf : 'F',
-            greninja : 'B',
-            hero : 'D',
-            iceclimbers : 'E',
-            ike : 'D',
-            incineroar : 'F',
-            inkling : 'B',
-            isabelle : 'F',
-            jigglypuff : 'F',
-            joker : 'A',
-            ken : 'C',
-            kingdedede : 'F',
-            kingkrool : 'F',
-            kirby : 'F',
-            link : 'C',
-            littlemac : 'F',
-            lucario : 'E',
-            lucas : 'D',
-            lucina : 'B',
-            luigi : 'D',
-            mario : 'B',
-            marth : 'D',
-            megaman : 'B',
-            metaknight : 'E',
-            mewtwo : 'F',
-            miibrawler : 'E',
-            miiswordfighter : 'E',
-            miigunner : 'F',
-            minmin : 'D',
-            mrgamewatch : 'B',
-            ness : 'C',
-            olimar : 'B',
-            pacman : 'B',
-            palutena : 'A',
-            peach : 'A',
-            pichu : 'C',
-            pikachu : 'A',
-            piranhaplant : 'E',
-            pit : 'F',
-            richter : 'E',
-            ridley : 'E',
-            rob : 'B',
-            robin : 'F',
-            rosalinaluma : 'D',
-            roy : 'B',
-            ryu : 'C',
-            samus : 'C',
-            sheik : 'E',
-            shulk : 'B',
-            simon : 'E',
-            snake : 'B',
-            sonic : 'C',
-            terry : 'C',
-            toonlink : 'D',
-            villager : 'E',
-            wario : 'B',
-            wiifittrainer : 'D',
-            wolf : 'B',
-            yoshi : 'C',
-            youngLink : 'C',
-            zelda : 'E',
-            zerosuitsamus : 'A',
-        },
-
-        value : {
+        maxValue : {
             Weight : 135,
             AirSpeed : 1.344,
             FallSpeed : 2.1,
@@ -131,16 +33,16 @@ export const store = new Vuex.Store({
 
     },
     getters: {
-        getTier: (state) => (name) => {
-            return state.tier[name]
+        getTier: (state) => (id) => {
+            return state.counters.chars[id].tier
         },
         
-        getStats: (state) => (id) => {
-            return state.chars[id].attr
+        getStatsFromStore: (state) => (id) => {
+            return state.counters.chars[id].attr
         },
         
         getCounters: (state) => (id, list) => {
-            const counterNames = state.chars[id][list];
+            const counterNames = state.counters.chars[id][list];
             const charsAll = state.charsAll;
 
            // Would be cool to reuse filtering function from store.js
@@ -158,7 +60,7 @@ export const store = new Vuex.Store({
         },
         
         maxValue: (state) => (elm) => {
-            return state.value[elm]
+            return state.maxValue[elm]
         },
     },
 

@@ -27,9 +27,9 @@
                         </p>
     
                         <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
-                            :class="getTierBg(fetchTier(this.char.Name))
+                            :class="getTierBg(getTier(this.char.OwnerId))
                             ">
-                            {{ fetchTier(this.char.Name) }}
+                            {{ getTier(this.char.OwnerId) }}
                             <span class="text-primary-white text-sm pl-2">
                                 TIER
                             </span>
@@ -37,7 +37,7 @@
                     </div>
                     
                     <div v-if="foundInAPI">
-                        <ul v-for="(item, index) in this.charAttr" :key="index">
+                        <ul v-for="(item, idx) in this.charAttr" :key="idx">
                             <li class="my-2 py-1">
                                 <p class="mb-2 text-sm text-primary-dark">
                                     {{ item.Name }}
@@ -52,11 +52,15 @@
                         </ul>
                     </div>
                     <div v-else>
-                        <ul v-for="(value, attr) in this.charAttr" :key="attr">
-                            <li class="my-2 py-1">
-                                <p class="mb-2 text-sm text-primary-dark">
-                                    {{ attr }}
+                        <ul v-for="(value, attr, idx) in this.charAttr" :key="attr">
+                            <li class="my-2 py-1 relative">
+                                <p class="mb-2 text-sm text-primary-dark inline-block" @click="hintClick(idx)">
+                                    {{ attr }} (?)
                                 </p>
+                                
+                                <!-- please avoid using v-if within v-fors, refactor this -->
+                                <Hints v-if="hintActive && idx == hintIndex" :attr="attr" v-on:closeHint="hintClose" />
+                                
                                 <div class="w-full rounded-lg flex items-center">
                                     <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueStore(attr, value)" :max="100" style="width:100%;" />
                                 </div>
@@ -74,14 +78,16 @@
 
 <script>
 import axios from "axios";
-import Counters from './Counters.vue'
 import { mapGetters } from 'vuex';
+import Counters from './Counters.vue'
+import Hints from './Hints.vue'
 
 export default {
     name: 'Attributes',
     
     components: {
-        Counters
+        Counters,
+        Hints
     },
 
     props: {
@@ -89,13 +95,16 @@ export default {
     },
 
     computed: {
-        ...mapGetters(['getTier', 'maxValue', 'getStats'])
+        ...mapGetters(['getTier', 'maxValue', 'getStatsFromStore'])
     },
 
     data() {
         return {
             charAttr: Array,
-            foundInAPI : true
+            foundInAPI : true,
+            attrFound: 0,
+            hintActive: false,
+            hintIndex: Number,
         }
     },
 
@@ -125,17 +134,17 @@ export default {
             // if its not found in SSBU, use Smash4
             const attr = isFound ? ultimate : await this.fetchAttr(id, 'smash4')
 
-            // if API doesn't return any attributes
-            if (attr.length < 1) {
-                this.foundInAPI = false;
-                this.charAttr = this.getStats(id);
-                return
-            }
-
             // Get selected attributes 
             const attrFilter = attr.filter(name => {
                 return this.filterAttr(name.Name)
             })
+
+            // if API doesn't return any attributes or any that matter to us
+            if (attr.length < 1 || this.attrFound < 4) {
+                this.foundInAPI = false;
+                this.charAttr = this.getStatsFromStore(id);
+                return
+            }
 
             // Remove duplicates
             const attrUnique = this.uniqueAttr(attrFilter);
@@ -164,6 +173,7 @@ export default {
                 case 'WalkSpeed':
                 case 'RunSpeed':
                 case 'Gravity':
+                    this.attrFound++
                     return elm
                 default:
                     return null;
@@ -187,11 +197,6 @@ export default {
         getImg(elm) {
             const name = elm.toLowerCase();
             return require(`@/assets/chars/${name}.png`)
-        },
-
-        fetchTier(elm) {
-            const name = elm.toLowerCase();
-            return this.getTier(name);
         },
 
         getTierBg(tier) {
@@ -220,7 +225,17 @@ export default {
 
         calcPercentaje(a, b) {
             return (a * 100) / b
+        },
+
+        hintClick(idx) {
+            this.hintActive = true
+            this.hintIndex = idx
+        },
+
+        hintClose() {
+            this.hintActive = false
         }
+
     }
 }
 </script>

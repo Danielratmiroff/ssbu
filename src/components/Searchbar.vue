@@ -30,6 +30,13 @@ export default {
             input : ''
         }
     },
+    watch: {
+        input: {
+            handler (elm) {
+                this.search(elm)
+            }
+        }
+    },
 
     methods: {
         search(value) {

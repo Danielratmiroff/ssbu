@@ -9,14 +9,14 @@
         </p>
 
         <!-- Weak Against -->
-        <div v-for="item in this.weakAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center                             " @click="openDetails(item)
+        <div v-for="(item, idx) in this.weakAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center                             " @click="openDetails(item)
             ">
             <div class="relative h-full w-full flex items-end">                
                 
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
                 <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between shadow-md" 
-                :class="item.Background" 
+                :class="getBackground(idx, 'red')"
                 style="height:4.5rem;">
                 
                     <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
@@ -34,7 +34,7 @@
         </p>
 
         <!-- Strong Against -->
-        <div v-for="item in this.strongAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center 
+        <div v-for="(item, idx) in this.strongAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center 
                             " @click="openDetails(item)
             ">
             <div class="relative h-full w-full flex items-end">                
@@ -42,7 +42,7 @@
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
                 <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between shadow-md" 
-                :class="item.Background" 
+                :class="getBackground(idx, 'green')"
                 style="height:4.5rem;">
                 
                     <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
@@ -85,6 +85,10 @@ export default {
          getImg(name) {
             const cleanName = name.toLowerCase()
             return require(`@/assets/chars/${cleanName}.png`)
+        },
+        getBackground(idx, color) {
+            const result = 7 - idx
+            return `bg-${color}-${result}0`
         }
     }
 }
