@@ -35,12 +35,16 @@
                             </span>
                         </p>
                     </div>
-                    
+                    <!-- Refactor the shit out of this, is too confusing. Combine two loops pls -->
                     <div v-if="foundInAPI">
                         <ul v-for="(item, idx) in this.charAttr" :key="idx">
-                            <li class="my-2 py-1">
-                                <p class="mb-2 text-sm text-primary-dark">
+                            <li class="my-2 py-1 relative">
+                                <p class="mb-2 text-sm text-primary-dark inline-block" >
                                     {{ item.Name }}
+                                    <span @click="hintClick(idx)" class="hover:cursor-pointer">
+                                        (?)
+                                    </span>
+                                    <Hints v-if="hintActive && idx == hintIndex" :attr="item.Name" v-on:closeHint="hintClose" />
                                 </p>
                                 <div class="w-full rounded-lg flex items-center">
                                     <!-- <p class="text-xs mr-3">
@@ -53,13 +57,21 @@
                     </div>
                     <div v-else>
                         <ul v-for="(value, attr, idx) in this.charAttr" :key="attr">
-                            <li class="my-2 py-1 relative">
-                                <p class="mb-2 text-sm text-primary-dark inline-block" @click="hintClick(idx)">
-                                    {{ attr }} (?)
-                                </p>
-                                
+                            <li class="my-2 py-1 relative ">
+                                <div class="mb-2 text-sm text-primary-dark flex items-center">
+                                    {{ attr }}
+                                    <div @click="hintClick(idx)" class="text-sm ml-2 text-center text-primary-grey font-bold border-2 bg-transparent border-solid border-primary-grey hover:cursor-pointer"
+                                        style="border-radius:50%;
+                                        width:auto;min-width:25px;
+                                        height:50%;"
+                                    >
+                                        ?
+                                    </div>
+                                    
                                 <!-- please avoid using v-if within v-fors, refactor this -->
                                 <Hints v-if="hintActive && idx == hintIndex" :attr="attr" v-on:closeHint="hintClose" />
+                                
+                                </div>
                                 
                                 <div class="w-full rounded-lg flex items-center">
                                     <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueStore(attr, value)" :max="100" style="width:100%;" />
@@ -103,7 +115,7 @@ export default {
             charAttr: Array,
             foundInAPI : true,
             attrFound: 0,
-            hintActive: false,
+            hintActive: Boolean,
             hintIndex: Number,
         }
     },
@@ -228,14 +240,13 @@ export default {
         },
 
         hintClick(idx) {
-            this.hintActive = true
-            this.hintIndex = idx
+            this.hintActive = this.hintIndex == idx ? !this.hintActive : true;
+            this.hintIndex = idx;
         },
 
         hintClose() {
-            this.hintActive = false
+            this.hintActive = false;
         }
-
     }
 }
 </script>
@@ -271,4 +282,5 @@ export default {
         font-size: 1.75rem
     }
 }
+
 </style>

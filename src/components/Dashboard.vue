@@ -8,7 +8,6 @@
         </p>
         <Searchbar v-on:filterBySearch="searchChar" />
         <Characters v-on:openDetails="openAttributes" :charList='this.showList' />
-    
     </div>
 </template>
 
