@@ -25,6 +25,8 @@
 </template>
 
 <script>
+
+
 import Start from './components/Start.vue'
 import Dashboard from './components/Dashboard.vue'
 import Attributes from './components/Attributes.vue'

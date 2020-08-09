@@ -6,12 +6,18 @@ import VueTippy, { TippyComponent } from "vue-tippy";
 import ProgressBar from 'vue-simple-progress'
 import { store } from './store/store'
 import axios from "axios";
-import VueAxios from "vue-axios";
-// import VueRouter from 'vue-router'
+import VueAxios from "vue-axios";// import VueRouter from 'vue-router'
 
 Vue.use(Vuex)
 Vue.use(VueTippy)
 Vue.component('ProgressBar', ProgressBar)
+Vue.component('tippy', TippyComponent)
+
+// Add additional themes.
+import "tippy.js/themes/light.css";
+import "tippy.js/themes/light-border.css";
+import "tippy.js/themes/google.css";
+import "tippy.js/themes/translucent.css";
 
 // Vue.use(VueRouter)
 // const router = new VueRouter({

@@ -1,10 +1,18 @@
 <template>
     <div>
-        <p @click="closeHint" class="absolute hint-popup text-xs inline-block p-4 leading-tight
-        max-w-full  sm:w-1/2
-        ">
-            {{this.content}}
-        </p>
+
+        <button class="ml-2 text-center text-grey-50 font-bold border bg-grey-10 border-solid border-primary-grey " 
+            style="line-height:1.2;border-radius:50%;height:12px;width:12px;font-size:0.6rem;"
+            :content="this.content" 
+            v-tippy="{
+                arrow : true,
+                arrowType : 'default',
+                theme : 'google',
+                trigger : 'click'
+                }">
+            ?
+        </button>
+
     </div>
 </template>
 
@@ -69,35 +77,4 @@ export default {
 }
 </script>
  
- <style scoped>
- .hint-popup {
-     background-color: #F0F4FF;
-     border: 1px solid #F0F4FF;
-     left: 20%;
-     top: 0px;
-     border-radius: 0 0.5rem 0.5rem 0.5rem
- }
-
-
-.hint-popup:before {
-    content:"\A";
-    border-style: solid;
-    border-width: 10px 15px 10px 0;
-    border-radius: 2px 0 0 0;
-    border-color: transparent #F0F4FF transparent transparent;
-    position: absolute;
-    left: -15px;
-    top: -1px;
-    z-index:999;
-}
-
-.hint-popup:after {
-    content:"×";
-    position:absolute;
-    right: 5px;
-    top:0;
-    font-weight:600;
-    z-index:10;
-}
-
- </style>
+ 

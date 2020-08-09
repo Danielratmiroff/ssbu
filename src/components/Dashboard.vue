@@ -6,11 +6,7 @@
         <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
             Discover more about your favorite characters
         </p>
-        <button 
-    content="I'm a Tippy tooltip!" 
-    v-tippy="{trigger : 'click'}">
-    Click
-</button>
+        
         <Searchbar v-on:filterBySearch="searchChar" />
         <Characters v-on:openDetails="openAttributes" :charList='this.showList' />
     </div>

@@ -26,11 +26,11 @@
                             Base stats
                         </p>
     
-                        <p class="text-lg text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
+                        <p class="text-md font-bold text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
                             :class="getTierBg(getTier(this.char.OwnerId))
                             ">
                             {{ getTier(this.char.OwnerId) }}
-                            <span class="text-primary-white text-sm pl-2">
+                            <span class="text-primary-white font-thin text-sm pl-2">
                                 TIER
                             </span>
                         </p>
@@ -41,12 +41,7 @@
                             <li class="my-2 py-1 relative">
                                 <div class="mb-2 text-sm flex items-center text-primary-dark" >
                                     {{ item.Name }}
-                                  <div @click="hintClick(idx)" class="ml-2 text-center text-grey-50 font-bold border bg-grey-10 border-solid border-primary-grey hover:cursor-pointer"
-                                        style="border-radius:50%;height:18px;width:18px;font-size:0.725rem;"
-                                    >
-                                        ?
-                                    </div>
-                                    <Hints v-if="hintActive && idx == hintIndex" :attr="item.Name" v-on:closeHint="hintClose" />
+                                    <Hints :attr="item.Name" />
                                 </div>
                                 <div class="w-full rounded-lg flex items-center">
                                     <!-- <p class="text-xs mr-3">
@@ -58,20 +53,13 @@
                         </ul>
                     </div>
                     <div v-else>
-                        <ul v-for="(value, attr, idx) in this.charAttr" :key="attr">
+                        <ul v-for="(value, attr) in this.charAttr" :key="attr">
                             <li class="my-2 py-1 relative ">
                                 <div class="mb-2 text-sm text-primary-dark flex items-center">
                                     {{ attr }}
-                                    <div @click="hintClick(idx)" class="text-sm ml-2 text-center text-primary-grey font-bold border-2 bg-transparent border-solid border-primary-grey hover:cursor-pointer"
-                                        style="border-radius:50%;
-                                        width:auto;min-width:25px;
-                                        height:50%;"
-                                    >
-                                        ?
-                                    </div>
                                     
                                 <!-- please avoid using v-if within v-fors, refactor this -->
-                                <Hints v-if="hintActive && idx == hintIndex" :attr="attr" v-on:closeHint="hintClose" />
+                                <Hints :attr="attr" />
                                 
                                 </div>
                                 
@@ -215,12 +203,12 @@ export default {
 
         getTierBg(tier) {
             return {
-                'bg-secondary-red': tier === 'A' ? true : null,
-                'bg-secondary-orange': tier === 'B' ? true : null,
-                'bg-secondary-green': tier === 'C' ? true : null,
-                'bg-secondary-lightblue': tier === 'D' ? true : null,
-                'bg-secondary-blue': tier === 'E' ? true : null,
-                'bg-secondary-purple': tier === 'F' ? true : null,
+                'bg-secondary-red': tier === 'Top' ? true : null,
+                'bg-secondary-orange': tier === 'High' ? true : null,
+                'bg-secondary-green': tier === 'Mid+' ? true : null,
+                'bg-secondary-lightblue': tier === 'Mid' ? true : null,
+                'bg-secondary-blue': tier === 'Low+' ? true : null,
+                'bg-secondary-purple': tier === 'Low' ? true : null,
             }
         },
 
@@ -240,15 +228,6 @@ export default {
         calcPercentaje(a, b) {
             return (a * 100) / b
         },
-
-        hintClick(idx) {
-            this.hintActive = this.hintIndex == idx ? !this.hintActive : true;
-            this.hintIndex = idx;
-        },
-
-        hintClose() {
-            this.hintActive = false;
-        }
     }
 }
 </script>
