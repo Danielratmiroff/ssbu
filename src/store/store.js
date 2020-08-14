@@ -69,6 +69,10 @@ export const store = new Vuex.Store({
             // Remove duplicates from array
             const uniqueChars = all.reduce((acc, current) => {
                 const x = acc.find(item => item.OwnerId === current.OwnerId);
+                if (current.DisplayName.includes('mus')) {
+
+                    console.log(current.DisplayName, current.OwnerId)
+                }
                 if (!x) {
                     return acc.concat([current]);
                 } else {
@@ -76,7 +80,6 @@ export const store = new Vuex.Store({
                 }
             }, []);
 
-            
 
             state.charsUnique = uniqueChars;
         },

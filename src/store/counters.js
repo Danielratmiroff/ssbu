@@ -657,7 +657,120 @@ export const counters = new Vuex.Store({
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
                 isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
             },
+            
+            56 : {
+                name : 'Yoshi',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
             77 : {
+                name : 'IceClimbers',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            31 : {
+                name : 'Mewtwo',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            
+            49 : {
+                name : 'Sheik',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            58 : {
+                name : 'ZeroSuitSamus',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            80 : {
+                name : 'DarkSamus',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            79 : {
+                name : 'Isabelle',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            
+            73 : {
+                name : 'KingKRool',
+                tier : 'Mid',
+                attr : {
+                    FallSpeed : '1.76',
+                    FullHop : '29.8',
+                    Weight : '106',
+                    RunSpeed : '2.18',
+                    Gravity : '0.11',
+                },
+                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
+                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+            },
+            78 : {
                 name : 'minmin',
                 DisplayName : 'Min Min',
                 tier : 'Mid',
