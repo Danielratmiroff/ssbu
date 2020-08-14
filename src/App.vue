@@ -1,6 +1,6 @@
 <template>
-    <div id="app">
-        <div class="flex mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
+    <div id="app" class=" bg-primary-white">
+        <div class="flex bg-primary-white mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
                  mb-3 justify-between items-center">
             <img @click="loadDashboard()" src="./assets/logo.png" class="max-h-full" />
             <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold
@@ -19,7 +19,12 @@
             <Start v-on:openDashboard="loadDashboard" v-if='this.start' />
             <About v-on:closeAbout="unloadAbout" v-if='this.aboutScreen' />
             <Dashboard class="inactive" :class="{ isActive : dashboardActive}" v-on:openDetails="loadDetails" v-on:openAbout='loadAbout' />
-            <Attributes v-on:closeDetails="unloadDetails" v-if='this.detailsScreen' :char='this.char' />
+            <Attributes 
+                v-on:closeDetails="unloadDetails" 
+                v-on:PassCounterDetails="PassCounterDetails" 
+                v-if='this.detailsScreen' 
+                :char='this.char' 
+                />
         </div>
     </div>
 </template>
@@ -77,12 +82,21 @@ export default {
             this.start = false;
             this.detailsScreen = false;
             this.dashboardActive = true;
+        },
+        PassCounterDetails(item) {
+            this.char = item;
         }
     }
 }
 </script>
 
 <style lang="scss">
+
+html {
+    @apply bg-primary-white;
+    scroll-behavior: smooth;
+}
+
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

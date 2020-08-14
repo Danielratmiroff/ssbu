@@ -18,6 +18,7 @@ import "tippy.js/themes/light.css";
 import "tippy.js/themes/light-border.css";
 import "tippy.js/themes/google.css";
 import "tippy.js/themes/translucent.css";
+import './registerServiceWorker'
 
 // Vue.use(VueRouter)
 // const router = new VueRouter({

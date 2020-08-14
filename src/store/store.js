@@ -44,7 +44,6 @@ export const store = new Vuex.Store({
         getCounters: (state) => (id, list) => {
             const counterNames = state.counters.chars[id][list];
             const charsAll = state.charsAll;
-
            // Would be cool to reuse filtering function from store.js
            // Create a reduce function to be reused since this is repeating itself multiple times
            const counters = counterNames.reduce((acc , current) => {

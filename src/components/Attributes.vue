@@ -36,12 +36,29 @@
                         </p>
                     </div>
                     <!-- Refactor the shit out of this, is too confusing. Combine two loops pls -->
-                    <div v-if="foundInAPI">
-                        <ul v-for="(item, idx) in this.charAttr" :key="idx">
+                    <div v-if="notFoundInAPI">
+                        <ul v-for="(value, attr) in this.charAttr" :key="attr">
+                            <li class="my-2 py-1 relative ">
+                                <div class="mb-2 text-sm text-primary-dark flex items-center">
+                                    {{ attr }}
+                                    
+                                    <Clues :attr="attr" />
+                                
+                                </div>
+                                <div class="w-full rounded-lg flex items-center">
+                                    <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueStore(attr, value)" :max="100" style="width:100%;" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                      <ul v-for="(item, idx) in this.charAttr" :key="idx">
                             <li class="my-2 py-1 relative">
                                 <div class="mb-2 text-sm flex items-center text-primary-dark" >
                                     {{ item.Name }}
-                                    <Hints :attr="item.Name" />
+
+                                    <Clues :attr="item.Name" />
+                                    
                                 </div>
                                 <div class="w-full rounded-lg flex items-center">
                                     <!-- <p class="text-xs mr-3">
@@ -52,25 +69,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div v-else>
-                        <ul v-for="(value, attr) in this.charAttr" :key="attr">
-                            <li class="my-2 py-1 relative ">
-                                <div class="mb-2 text-sm text-primary-dark flex items-center">
-                                    {{ attr }}
-                                    
-                                <!-- please avoid using v-if within v-fors, refactor this -->
-                                <Hints :attr="attr" />
-                                
-                                </div>
-                                
-                                <div class="w-full rounded-lg flex items-center">
-                                    <progress-bar size="medium" bg-color="#F0F4FF" bar-color="linear-gradient(90deg, rgba(29,109,227,1) 0%, rgba(0,194,255,1) 78%)" :val="progressValueStore(attr, value)" :max="100" style="width:100%;" />
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
 
-                <Counters :id="this.char.OwnerId" /> 
+                <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails" /> 
     
                 </div>
             </div>
@@ -81,15 +81,15 @@
 <script>
 import axios from "axios";
 import { mapGetters } from 'vuex';
-import Counters from './Counters.vue'
-import Hints from './Hints.vue'
+import Counters from './Counters.vue';
+import Clues from './Clues.vue';
 
 export default {
     name: 'Attributes',
     
     components: {
         Counters,
-        Hints
+        Clues
     },
 
     props: {
@@ -103,7 +103,7 @@ export default {
     data() {
         return {
             charAttr: Array,
-            foundInAPI : true,
+            notFoundInAPI : Boolean,
             attrFound: 0,
             hintActive: Boolean,
             hintIndex: Number,
@@ -129,9 +129,15 @@ export default {
             this.$emit('closeDetails');
         },
 
+        AppOpenCounterDetails(item) {
+            this.$emit('PassCounterDetails', item);
+        },
+
         async getAttr(id) {
             const ultimate = await this.fetchAttr(id, 'ultimate')
             const isFound = !Array.isArray(ultimate)
+            this.notFoundInAPI = undefined;
+            this.attrFound = 0;
 
             // if its not found in SSBU, use Smash4
             const attr = isFound ? ultimate : await this.fetchAttr(id, 'smash4')
@@ -143,14 +149,13 @@ export default {
 
             // if API doesn't return any attributes or any that matter to us
             if (attr.length < 1 || this.attrFound < 4) {
-                this.foundInAPI = false;
+                this.notFoundInAPI = true;
                 this.charAttr = this.getStatsFromStore(id);
                 return
             }
-
+     
             // Remove duplicates
             const attrUnique = this.uniqueAttr(attrFilter);
-
             this.charAttr = attrUnique;
         },
 
@@ -184,7 +189,7 @@ export default {
 
         uniqueAttr(elm) {
             // Would be cool to reuse filtering function from store.js
-            const unique = elm.reduce((acc, current) => {
+                const unique = elm.reduce((acc, current) => {
                 const x = acc.find(item => item.Name === current.Name);
                 if (!x) {
                     return acc.concat([current]);
@@ -192,7 +197,6 @@ export default {
                     return acc;
                 }
             }, []);
-
             return unique
         },
 

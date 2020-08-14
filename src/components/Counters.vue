@@ -9,9 +9,8 @@
         </p>
 
         <!-- Weak Against -->
-        <div v-for="(item, idx) in this.weakAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center                             " @click="openDetails(item)
-            ">
-            <div class="relative h-full w-full flex items-end">                
+        <div v-for="(item, idx) in this.weakAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
+            <div @click="openCounterDetails(item)" class="relative h-full w-full flex items-end">                
                 
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
@@ -34,10 +33,8 @@
         </p>
 
         <!-- Strong Against -->
-        <div v-for="(item, idx) in this.strongAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center 
-                            " @click="openDetails(item)
-            ">
-            <div class="relative h-full w-full flex items-end">                
+        <div v-for="(item, idx) in this.strongAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
+            <div @click="openCounterDetails(item)" class="relative h-full w-full flex items-end">                
                 
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
@@ -76,6 +73,10 @@ export default {
     },
 
     methods: {
+        openCounterDetails(item) {
+            window.scrollTo(0, 0)
+            this.$emit('openCounterDetails', item);
+        },
         weakAgainst(id) {
             return this.getCounters(id, 'isWeak');
         },
@@ -93,7 +94,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
