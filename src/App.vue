@@ -128,7 +128,7 @@ html {
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Nunito', cursive;
+    font-family: 'Nunito', 'Helvetica', sans-serif;
     font-size: 16px;
     max-width:1260px;
     margin: 0 auto
