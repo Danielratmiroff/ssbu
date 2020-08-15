@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class=" bg-primary-white">
+    <div id="app" class="bg-primary-white">
         <div class="flex bg-primary-white mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
                  mb-3 justify-between items-center">
             <img @click="loadDashboard()" src="./assets/logo.png" class="max-h-full" />
@@ -7,21 +7,33 @@
             md:text-lg
             ">About</div>
         </div>
-        <div class="wrap p-3 bg-primary-white w-full pt-1">
+        <div class="wrap p-3 bg-primary-white w-full pt-1
+        md:p-0
+        ">
             <!-- <nav>
-                                Router
-                                    <router-link to="/">Home</router-link>
-                                    <router-link to="/attributes">Attributes</router-link>
-                                    <router-link to="/about">About</router-link>
-                                </nav>
-                                <router-view></router-view>
-                         -->
-            <Start v-on:openDashboard="loadDashboard" v-if='this.start' />
-            <About v-on:closeAbout="unloadAbout" v-if='this.aboutScreen' />
-            <Dashboard class="inactive" :class="{ isActive : dashboardActive}" v-on:openDetails="loadDetails" v-on:openAbout='loadAbout' />
+                Router
+                    <router-link to="/">Home</router-link>
+                    <router-link to="/attributes">Attributes</router-link>
+                    <router-link to="/about">About</router-link>
+                </nav>
+                <router-view></router-view>
+            -->
+            <Start 
+                @openDashboard="loadDashboard" 
+                v-if='this.start'
+            />
+            <About 
+                @closeAbout="unloadAbout" 
+                v-if='this.aboutScreen'
+                 />
+            <Dashboard class="inactive" 
+                :class="{ isActive : dashboardActive}" 
+                @openDetails="loadDetails" 
+                @openAbout='loadAbout'
+                 />
             <Attributes 
-                v-on:closeDetails="unloadDetails" 
-                v-on:PassCounterDetails="PassCounterDetails" 
+                @closeDetails="unloadDetails" 
+                @PassCounterDetails="loadDetails" 
                 v-if='this.detailsScreen' 
                 :char='this.char' 
                 />
@@ -30,7 +42,6 @@
 </template>
 
 <script>
-
 
 import Start from './components/Start.vue'
 import Dashboard from './components/Dashboard.vue'
@@ -45,20 +56,41 @@ export default {
         Start,
         About
     },
+
     data() {
         return {
             detailsScreen: false,
             aboutScreen: false,
             dashboardActive: false,
             start: true,
-            char: {}
+            smooth: false,
+            char: Object,
         }
     },
 
     methods: {
+        
+        loadDashboard() {
+            this.start = false;
+            this.detailsScreen = false;
+            this.dashboardActive = true;
+            this.smooth = false;
+        },
+
         loadDetails(elm) {
-            this.detailsScreen = true;
+            //We want the Attributes screen to smoothly scroll
+            if (this.smooth) {
+                window.scrollTo({ 
+                top: 0, 
+                left: 0, 
+                behavior: 'smooth'
+            })} 
+            else {
+                window.scrollTo(0, 0)
+            }
+            this.detailsScreen = true;  
             this.dashboardActive = false;
+            this.smooth = true;
             // Pass char values to children
             this.char = elm;
         },
@@ -78,14 +110,6 @@ export default {
             this.dashboardActive = true;
         },
 
-        loadDashboard() {
-            this.start = false;
-            this.detailsScreen = false;
-            this.dashboardActive = true;
-        },
-        PassCounterDetails(item) {
-            this.char = item;
-        }
     }
 }
 </script>
@@ -94,6 +118,9 @@ export default {
 
 html {
     @apply bg-primary-white;
+}
+
+.smoothScroll {
     scroll-behavior: smooth;
 }
 

@@ -29,21 +29,27 @@ export const store = new Vuex.Store({
 
         charsUnique : [],
         charsSorted : [],
+        charsNewAdded : [],
         charsAll : [],
 
     },
     getters: {
         getTier: (state) => (id) => {
-            return state.counters.chars[id].tier
+            return state.counters.chars[id].Tier
         },
         
         getStatsFromStore: (state) => (id) => {
-            return state.counters.chars[id].attr
+            return state.counters.chars[id].Attr
+        },
+        
+        maxValue: (state) => (elm) => {
+            return state.maxValue[elm]
         },
         
         getCounters: (state) => (id, list) => {
             const counterNames = state.counters.chars[id][list];
             const charsAll = state.charsAll;
+
            // Would be cool to reuse filtering function from store.js
            // Create a reduce function to be reused since this is repeating itself multiple times
            const counters = counterNames.reduce((acc , current) => {
@@ -56,10 +62,6 @@ export const store = new Vuex.Store({
                 }
             }, []);
             return counters
-        },
-        
-        maxValue: (state) => (elm) => {
-            return state.maxValue[elm]
         },
     },
 
@@ -75,7 +77,6 @@ export const store = new Vuex.Store({
                 }
             }, []);
 
-
             state.charsUnique = uniqueChars;
         },
 
@@ -88,12 +89,31 @@ export const store = new Vuex.Store({
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });   
         
-            state.charsSorted = allSorted
+            state.charsSorted = allSorted;
+        },
+
+        STORE_NEWERCHARS(state) {
+            // Add newer chars which are not yet in the API
+            const all = state.charsUnique;
+
+            const missingChars = ['Isabelle', 'Byleth', 'MinMin', 'DarkSamus'];
+            const counterStore = state.counters.chars;
+            const objectChars = JSON.parse(JSON.stringify(counterStore));
+            
+            const charsData = Object.keys(objectChars)
+                .map(key => missingChars.includes(objectChars[key].Name) 
+                ? objectChars[key] : null )
+                .filter(key => key);
+                
+            const newerChars = all.concat(charsData);
+
+            state.charsNewAdded = newerChars;
+
         },
 
         STORE_BG(state) {
             // Add background colors to characters
-            const all = state.charsSorted
+            const all = state.charsNewAdded
             let count = 0;
             const addColors = all.map(elm => {
                 switch(count) {
@@ -145,6 +165,7 @@ export const store = new Vuex.Store({
 
                 commit('STORE_UNIQUE', all);
                 commit('STORE_SORTED')
+                commit('STORE_NEWERCHARS')
                 commit('STORE_BG')
 
             })

@@ -26,15 +26,16 @@
                             Base stats
                         </p>
     
-                        <p class="text-md font-bold text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
+                        <p class="text-md text-primary-white flex items-center inline-block rounded-md shadow-md px-3 py-1 text-center" 
                             :class="getTierBg(getTier(this.char.OwnerId))
                             ">
                             {{ getTier(this.char.OwnerId) }}
-                            <span class="text-primary-white font-thin text-sm pl-2">
+                            <span class="text-primary-white font-thin text-xs pl-2">
                                 TIER
                             </span>
                         </p>
                     </div>
+
                     <!-- Refactor the shit out of this, is too confusing. Combine two loops pls -->
                     <div v-if="notFoundInAPI">
                         <ul v-for="(value, attr) in this.charAttr" :key="attr">
@@ -51,6 +52,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <div v-else>
                       <ul v-for="(item, idx) in this.charAttr" :key="idx">
                             <li class="my-2 py-1 relative">
@@ -70,7 +72,7 @@
                         </ul>
                     </div>
 
-                <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails" /> 
+                    <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails" /> 
     
                 </div>
             </div>
@@ -217,16 +219,16 @@ export default {
         },
 
         progressValueAPI({ Name, Values }) {
-            const statValue = Values[0].Value
-            const maxValue = this.maxValue(Name)
-            const percentaje = this.calcPercentaje(statValue, maxValue)
-            return percentaje
+            const statValue = Values ? Values[0].Value : null;
+            const maxValue = this.maxValue(Name);
+            const percentaje = this.calcPercentaje(statValue, maxValue);
+            return percentaje;
         },
 
         progressValueStore(attrName, statValue) {
-            const maxValue = this.maxValue(attrName)
-            const percentaje = this.calcPercentaje(statValue, maxValue)
-            return percentaje
+            const maxValue = this.maxValue(attrName);
+            const percentaje = this.calcPercentaje(statValue, maxValue);
+            return percentaje;
         },
 
         calcPercentaje(a, b) {

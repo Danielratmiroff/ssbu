@@ -12,72 +12,65 @@ export const counters = new Vuex.Store({
         chars : {
 
             1 : {
-                name : 'Bayonetta',
-                tier : 'Mid',
+                Name : 'Bayonetta',
+                Tier : 'Mid',
                 isStrong : ['Ganondorf', 'KingDedede', 'Ridley', 'KingKRool'],
                 isWeak : ['Lucario', 'Pichu', 'YoungLink', 'Pikachu']
             },
 
             2 : {
-                name : 'Bowser',
-                tier : 'Mid+',
+                Name : 'Bowser',
+                Tier : 'Mid+',
                 isStrong : ['YoungLink', 'DarkSamus', 'Pikachu', 'Samus'],
                 isWeak : ['Jigglypuff', 'Kirby', 'Charizard', 'LittleMac']
             },
 
-            88 : {
-                name : 'Byleth',
-                tier : 'Mid+',
-                isStrong : ['DonkeyKong', 'Ganondorf', 'Bowser', 'Ridley'],
-                isWeak : ['Pikachu', 'Joker', 'YoungLink', 'Wolf']
-            },
-
             3 : {
-                name : 'Bowserjr',
-                tier : 'Low',
+                Name : 'Bowserjr',
+                Tier : 'Low',
                 isStrong : ['Link', 'Wolf', 'Pikachu', 'Palutena'],
                 isWeak : ['Ganondorf', 'Jigglypuff', 'Ryu', 'LittleMac'],
             },
             
             5 : {
-                name : 'Charizard',
-                tier : 'High',
+                Name : 'Charizard',
+                Tier : 'High',
                 isStrong : ['Kirby', 'PiranhaPlant', 'Jigglypuff', 'MrGameWatch'],
                 isWeak : ['Pichu', 'Ike', 'Link', 'Sonic']
             },
             
             61 : {
-                name : 'Chrom',
-                tier : 'High',
+                Name : 'Chrom',
+                Tier : 'High',
                 isStrong : ['DonkeyKong', 'Ganondorf', 'Charizard', 'Bowser'],
                 isWeak : ['Squirtle', 'Pikachu', 'Inkling', 'YoungLink']
             },
             
             6 : {
-                name : 'Cloud',
-                tier : 'Mid+',
+                Name : 'Cloud',
+                Tier : 'Mid+',
                 isStrong : ['Jigglypuff', 'Yoshi', 'LittleMac', 'KingKRool'],
                 isWeak : ['Pikachu', 'Shulk', 'Wolf', 'Inkling']
             },
             
             7 : {
-                name : 'Corrin',
-                tier : 'Low',
+                Name : 'Corrin',
+                Tier : 'Low',
                 isStrong : ['Jigglypuff', 'Ganondorf', 'LittleMac', 'Incineroar'],
                 isWeak : ['Samus', 'DarkSamus', 'Simon', 'Joker']
             },
             
             60 : {
-                name : 'Daisy',
-                tier : 'Top',
+                Name : 'Daisy',
+                Tier : 'Top',
                 isStrong : ['LittleMac', 'DonkeyKong', 'KingDedede', 'Jigglypuff'],
                 isWeak : ['Cloud', 'Shulk', 'Wolf', 'RosalinaLuma']
             },
             
             8 : {
-                name : 'DarkPit',
-                tier : 'Low',
-                attr : {
+                Name : 'DarkPit',
+                Tier : 'Low',
+                Attr : {
                     AirFriction : '0.014',
                     FallSpeed : '1.76',
                     FullHop : '29.8',
@@ -91,16 +84,16 @@ export const counters = new Vuex.Store({
             },
             
             9 : {
-                name : 'DiddyKong',
-                tier : 'Mid',
+                Name : 'DiddyKong',
+                Tier : 'Mid',
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Ridley', 'Dr Mario'],
                 isWeak : ['Pikachu', 'Pichu', 'ROB', 'Wolf']
             },
             
             10 : {
-                name : 'DonkeyKong',
-                tier : 'Low',
-                attr : {
+                Name : 'DonkeyKong',
+                Tier : 'Low',
+                Attr : {
                     FallSpeed : '1.63',
                     FullHop : '34',
                     Weight : '127',
@@ -113,9 +106,9 @@ export const counters = new Vuex.Store({
             
             
             4 : {
-                name : 'CaptainFalcon',
-                tier : 'Low+',
-                attr : {
+                Name : 'CaptainFalcon',
+                Tier : 'Low+',
+                Attr : {
                     FallSpeed : '1.865',
                     FullHop : '37.31',
                     Weight : '104',
@@ -127,9 +120,9 @@ export const counters = new Vuex.Store({
             },
             
             11 : {
-                name : 'DrMario',
-                tier : 'Low',
-                attr : {
+                Name : 'DrMario',
+                Tier : 'Low',
+                Attr : {
                     FallSpeed : '1.5',
                     FullHop : '30.8805',
                     Weight : '98',
@@ -141,9 +134,9 @@ export const counters = new Vuex.Store({
             },
             
             12 : {
-                name : 'DuckHunt',
-                tier : 'Mid',
-                attr : {
+                Name : 'DuckHunt',
+                Tier : 'Mid',
+                Attr : {
                     FallSpeed : '1.65',
                     FullHop : '34',
                     Weight : '86',
@@ -155,37 +148,37 @@ export const counters = new Vuex.Store({
             },
             
             13 : {
-                name : 'Falco',
-                tier : 'Mid',
+                Name : 'Falco',
+                Tier : 'Mid',
                 isStrong : ['KingKRool', 'Simon', 'Richter', 'KingDedede'],
                 isWeak : ['Pichu', 'Pikachu', 'Greninja', 'Game and Watch']
             },
             
             14 : {
-                name : 'Fox',
-                tier : 'High',
+                Name : 'Fox',
+                Tier : 'High',
                 isStrong : ['DarkSamus', 'Samus', 'KingKRool', 'Ridley'],
                 isWeak : ['Lucina', 'Pikachu', 'ROB', 'Pichu']
             },
             
             15 : {
-                name : 'Ganondorf',
-                tier : 'Low',
+                Name : 'Ganondorf',
+                Tier : 'Low',
                 isStrong : ['Ryu', 'LittleMac', 'Kirby', 'Incineroar'],
                 isWeak : ['Richter', 'Ness', 'Snake', 'YoungLink']
             },
             
             16 : {
-                name : 'Greninja',
-                tier : 'High',
+                Name : 'Greninja',
+                Tier : 'High',
                 isStrong : ['LittleMac', 'DonkeyKong', 'Incineroar', 'Cloud'],
                 isWeak : ['YoungLink', 'Snake', 'Palutena', 'Sonic']
             },
             
             75 : {
-                name : 'Hero',
-                tier : 'Mid',
-                attr : {
+                Name : 'Hero',
+                Tier : 'Mid',
+                Attr : {
                     FallSpeed : '1.57',
                     FullHop : '29',
                     Weight : '101',
@@ -197,44 +190,44 @@ export const counters = new Vuex.Store({
             },
             
             17 : {
-                name : 'Ike',
-                tier : 'Mid',
+                Name : 'Ike',
+                Tier : 'Mid',
                 isStrong : ['Jigglypuff', 'KingKRool', 'Kirby', 'Ganondorf'],
                 isWeak : ['Pichu', 'YoungLink', 'Palutena', 'Simon']
             },
             
             59 : {
-                name : 'Incineroar',
-                tier : 'Low',
+                Name : 'Incineroar',
+                Tier : 'Low',
                 isStrong : ['KingKRool', 'DonkeyKong', 'Bowser', 'Jigglypuff'],
                 isWeak : ['Richter', 'Simon', 'Lucas', 'Pikachu']
             },
             
             62 : {
-                name : 'Inkling',
-                tier : 'High',
+                Name : 'Inkling',
+                Tier : 'High',
                 isStrong : ['Ganondorf', 'CaptainFalcon', 'DonkeyKong', 'Ridley'],
                 isWeak : ['Lucina', 'ROB', 'Marth', 'Cloud']
             },
             
             72 : {
-                name : 'Ivysaur',
-                tier : 'Top',
+                Name : 'Ivysaur',
+                Tier : 'Top',
                 isStrong : ['LittleMac', 'ROB', 'Snake', 'KingDedede'],
                 isWeak : ['Megaman', 'Palutena', 'Wolf', 'YoungLink']
             },
             
             18 : {
-                name : 'Jigglypuff',
-                tier : 'Low',
+                Name : 'Jigglypuff',
+                Tier : 'Low',
                 isStrong : ['KingKRool', 'DonkeyKong', 'Bowser', 'Ganondorf'],
                 isWeak : ['Ike', 'Lucina', 'Marth', 'Chrom']
             },
             
             74 : {
-                name : 'Joker',
-                tier : 'Top',
-                 attr : {
+                Name : 'Joker',
+                Tier : 'Top',
+                 Attr : {
                     FullHop : '32.5',
                     Gravity : '0.127',
                     RunSpeed : '2.06',
@@ -246,86 +239,86 @@ export const counters = new Vuex.Store({
             },
             
             70 : {
-                name : 'Ken',
-                tier : 'Mid+',
+                Name : 'Ken',
+                Tier : 'Mid+',
                 isStrong : ['KingKRool', 'Charizard', 'KingDedede', 'DonkeyKong'],
                 isWeak : ['Ness', 'Pikachu', 'Pichu', 'YoungLink']
             },
             
             19 : {
-                name : 'KingDedede',
-                tier : 'Low',
+                Name : 'KingDedede',
+                Tier : 'Low',
                 isStrong : ['Ganondorf', 'LittleMac', 'Incineroar', 'DonkeyKong'],
                 isWeak : ['Palutena', 'Pikachu', 'Zelda', 'Pichu']
             },
             
             20 : {
-                name : 'Kirby',
-                tier : 'Low',
+                Name : 'Kirby',
+                Tier : 'Low',
                 isStrong : ['LittleMac', 'DonkeyKong', 'Incineroar', 'Bowser'],
                 isWeak : ['Ike', 'Lucina', 'Chrom', 'Roy']
             },
             
             21 : {
-                name : 'Link',
-                tier : 'Mid+',
+                Name : 'Link',
+                Tier : 'Mid+',
                 isStrong : ['KingKRool', 'Ganondorf', 'Icineroar', 'Jigglypuff'],
                 isWeak : ['Pikachu', 'Wolf', 'Pichu', 'Falco']
             },
             
             22 : {
-                name : 'LittleMac',
-                tier : 'Low',
+                Name : 'LittleMac',
+                Tier : 'Low',
                 isStrong : ['Lucario', 'Ganondorf', 'Charizard', 'Bowser'],
                 isWeak : ['Ridley', 'Isabelle', 'Palutena', 'Dark Pit']
             },
             
             23 : {
-                name : 'Lucario',
-                tier : 'Low+',
+                Name : 'Lucario',
+                Tier : 'Low+',
                 isStrong : ['LittleMac', 'Sheik', 'Bayonetta', 'KingDedede'],
                 isWeak : ['Bowser', 'Lucina', 'Joker', 'Ness']
             },
             
             24 : {
-                name : 'Lucas',
-                tier : 'Mid',
+                Name : 'Lucas',
+                Tier : 'Mid',
                 isStrong : ['Ganondorf', 'KingKRool', 'LittleMac', 'Snake'],
                 isWeak : ['Peach', 'Palutena', 'Lucina', 'Cloud']
             },
             
             25 : {
-                name : 'Lucina',
-                tier : 'High',
+                Name : 'Lucina',
+                Tier : 'High',
                 isStrong : ['Kirby', 'Ganondorf', 'Charizard', 'LittleMac'],
                 isWeak : ['YoungLink', 'Snake', 'Megaman', 'Inkling']
             },
             
             26 : {
-                name : 'Luigi',
-                tier : 'Mid',
+                Name : 'Luigi',
+                Tier : 'Mid',
                 isStrong : ['Ganondorf', 'DonkeyKong', 'LittleMac', 'Bowser'],
                 isWeak : ['YoungLink', 'Samus', 'DarkSamus', 'Lucina']
             },
             
             27 : {
-                name : 'Mario',
-                tier : 'High',
+                Name : 'Mario',
+                Tier : 'High',
                 isStrong : ['KingKRool', 'Chrizard', 'Bowser', 'Ridley'],
                 isWeak : ['Lucina', 'Marth', 'Shulk', 'Cloud']
             },
             
             28 : {
-                name : 'Marth',
-                tier : 'Mid',
+                Name : 'Marth',
+                Tier : 'Mid',
                 isStrong : ['LittleMac', 'Ganondorf', 'Kirby', 'DonkeyKong'],
                 isWeak : ['YoungLink', 'Snake', 'Inkling', 'ToonLink']
             },
             
             29 : {
-                name : 'MegaMan',
-                tier : 'High',
-                attr : {
+                Name : 'MegaMan',
+                Tier : 'High',
+                Attr : {
                     FullHop : '32.8',
                     Gravity : '0.107',
                     RunSpeed : '1.602',
@@ -337,16 +330,16 @@ export const counters = new Vuex.Store({
             },
             
             30 : {
-                name : 'MetaKnight',
-                tier : 'Low+',
+                Name : 'MetaKnight',
+                Tier : 'Low+',
                 isStrong : ['LittleMac', 'Dr Mario', 'Squirtle', 'Sonic'],
                 isWeak : ['Megaman', 'Cloud', 'Joker', 'Ness']
             },
             
             32 : {
-                name : 'MiiBrawler',
-                tier : 'Low+',
-                attr : {
+                Name : 'MiiBrawler',
+                Tier : 'Low+',
+                Attr : {
                     FullHop : '35',
                     Gravity : '0.169',
                     RunSpeed : '1.92',
@@ -358,9 +351,9 @@ export const counters = new Vuex.Store({
             },
             
             33 : {
-                name : 'MiiGunner',
-                tier : 'Low',
-                attr : {
+                Name : 'MiiGunner',
+                Tier : 'Low',
+                Attr : {
                     FullHop : '30.9',
                     Gravity : '0.098',
                     RunSpeed : '1.37',
@@ -372,9 +365,9 @@ export const counters = new Vuex.Store({
             },
             
             34 : {
-                name : 'MiiSwordfighter',
-                tier : 'Low+',
-                attr : {
+                Name : 'MiiSwordfighter',
+                Tier : 'Low+',
+                Attr : {
                     FullHop : '28.3',
                     Gravity : '0.106',
                     RunSpeed : '1.58',
@@ -386,170 +379,170 @@ export const counters = new Vuex.Store({
             },
             
             35 : {
-                name : 'MrGameWatch',
-                tier : 'High',
+                Name : 'MrGameWatch',
+                Tier : 'High',
                 isStrong : ['Ness', 'Lucas', 'Snake', 'Pikachu'],
                 isWeak : ['Ike', 'Cloud', 'Shulk', 'Marth']
             },
             
             36 : {
-                name : 'Ness',
-                tier : 'Mid+',
+                Name : 'Ness',
+                Tier : 'Mid+',
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Bowser', 'KingKRool'],
                 isWeak : ['YoungLink', 'Lucina', 'Palutena', 'Link']
             },
             
             37 : {
-                name : 'Olimar',
-                tier : 'High',
+                Name : 'Olimar',
+                Tier : 'High',
                 isStrong : ['Pichu', 'Incineroar', 'LittleMac', 'KingKRool'],
                 isWeak : ['ROB', 'Shulk', 'Daisy', 'Wolf']
             },
             
             38 : {
-                name : 'PAC-MAN',
-                tier : 'High',
+                Name : 'PAC-MAN',
+                Tier : 'High',
                 isStrong : ['LittleMac', 'Ganondorf', 'DonkeyKong', 'Ridley'],
                 isWeak : ['Fox', 'Palutena', 'Falco', 'Zelda']
             },
             
             39 : {
-                name : 'Palutena',
-                tier : 'Top',
+                Name : 'Palutena',
+                Tier : 'Top',
                 isStrong : ['Ridley', 'KingDedede', 'KingKRool', 'Ganondorf'],
                 isWeak : ['Pichu', 'Pikachu', 'Inkling', 'Greninja']
             },
             
             40 : {
-                name : 'Peach',
-                tier : 'Top',
+                Name : 'Peach',
+                Tier : 'Top',
                 isStrong : ['LittleMac', 'Bowser', 'Mario', 'KingKRool'],
                 isWeak : ['Lucina', 'Link', 'Joker', 'Cloud']
             },
             
             64 : {
-                name : 'Pichu',
-                tier : 'Mid+',
+                Name : 'Pichu',
+                Tier : 'Mid+',
                 isStrong : ['Ganondorf', 'KingKRool', 'DonkeyKong', 'Bowser'],
                 isWeak : ['Lucina', 'Snake', 'Marth', 'Chrom']
             },
             
             41 : {
-                name : 'Pikachu',
-                tier : 'Top',
+                Name : 'Pikachu',
+                Tier : 'Top',
                 isStrong : ['KingKRool', 'Ganondorf', 'DonkeyKong', 'Incineroar'],
                 isWeak : ['Ness', 'MrGameWatch', 'Peach', 'Daisy']
             },
             
             69 : {
-                name : 'PiranhaPlant',
-                tier : 'Low+',
+                Name : 'PiranhaPlant',
+                Tier : 'Low+',
                 isStrong : ['Bayonetta', 'Jigglypuff', 'Ridley', 'Ganondorf'],
                 isWeak : ['Samus', 'Joker', 'Falco', 'Bowser']
             },
             
             42 : {
-                name : 'Pit',
-                tier : 'Low',
+                Name : 'Pit',
+                Tier : 'Low',
                 isStrong : ['LittleMac', 'Ryu', 'Ganondorf', 'Captain Falco'],
                 isWeak : ['Pikachu', 'Lucina', 'Pichu', 'Snake']
             },
             
             63 : {
-                name : 'Richter',
-                tier : 'Low+',
+                Name : 'Richter',
+                Tier : 'Low+',
                 isStrong : ['Olimar', 'Ganondorf', 'Bowser', 'DonkeyKong'],
                 isWeak : ['Pichu', 'Pikachu', 'Palutena', 'Joker']
             },
             
             71 : {
-                name : 'Ridley',
-                tier : 'Low+',
+                Name : 'Ridley',
+                Tier : 'Low+',
                 isStrong : ['Ganondorf', 'LittleMac', 'Incineroar', 'Kind Dedede'],
                 isWeak : ['Pikachu', 'Pichu', 'Ness', 'Palutena']
             },
             
             43 : {
-                name : 'Rob',
-                tier : 'High',
+                Name : 'Rob',
+                Tier : 'High',
                 isStrong : ['Incineroar', 'LittleMac', 'DonkeyKong', 'Ridley'],
                 isWeak : ['Pikachu', 'Pichu', 'Cloud', 'Palutena']
             },
             
             44 : {
-                name : 'Robin',
-                tier : 'Low',
+                Name : 'Robin',
+                Tier : 'Low',
                 isStrong : ['Ganondorf', 'Bowser', 'Charizard', 'Incineroar'],
                 isWeak : ['Pichu', 'Pikachu', 'Wolf', 'Squirtle']
             },
             
             45 : {
-                name : 'RosalinaLuma',
-                tier : 'Mid',
+                Name : 'RosalinaLuma',
+                Tier : 'Mid',
                 isStrong : ['Lucas', 'Ness', 'PAC-MAN', 'LittleMac'],
                 isWeak : ['Chrom', 'Palutena', 'Pikachu', 'Lucina']
             },
             
             46 : {
-                name : 'Roy',
-                tier : 'High',
+                Name : 'Roy',
+                Tier : 'High',
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Bowser', 'Charizard'],
                 isWeak : ['Snake', 'Pikachu', 'ROB', 'YoungLink']
             },
             
             47 : {
-                name : 'Ryu',
-                tier : 'Mid+',
+                Name : 'Ryu',
+                Tier : 'Mid+',
                 isStrong : ['DonkeyKong', 'Villager', 'PiranhaPlant', 'LittleMac'],
                 isWeak : ['Ness', 'Richter', 'Snake', 'Simon']
             },
             
             48 : {
-                name : 'Samus',
-                tier : 'Mid+',
+                Name : 'Samus',
+                Tier : 'Mid+',
                 isStrong : ['Ganondorf', 'Bowser', 'Ridley', 'KingKRool'],
                 isWeak : ['Wolf', 'Fox', 'Palutena', 'Falco']
             },
             
             50 : {
-                name : 'Shulk',
-                tier : 'High',
+                Name : 'Shulk',
+                Tier : 'High',
                 isStrong : ['LittleMac', 'Jigglypuff', 'CaptainFalcon', 'Ridley'],
                 isWeak : ['Snake', 'Pikachu', 'ROB', 'Palutena']
             },
             
             66 : {
-                name : 'Simon',
-                tier : 'Low+',
+                Name : 'Simon',
+                Tier : 'Low+',
                 isStrong : ['Ganondorf', 'Bowser', 'Charizard', 'Ridley'],
                 isWeak : ['Pikachu', 'Pichu', 'Joker', 'ZeroSuitSamus']
             },
             
             65 : {
-                name : 'Snake',
-                tier : 'High',
+                Name : 'Snake',
+                Tier : 'High',
                 isStrong : ['Kirby', 'Ganondorf', 'LittleMac', 'DonkeyKong'],
                 isWeak : ['Ness', 'Lucas', 'YoungLink', 'MrGameWatch']
             },
             
             51 : {
-                name : 'Sonic',
-                tier : 'Mid+',
+                Name : 'Sonic',
+                Tier : 'Mid+',
                 isStrong : ['Ridley', 'BowserJr', 'Zelda', 'Incineroar'],
                 isWeak : ['Pikachu', 'Wolf', 'Lucina', 'Megaman']
             },
             
             67 : {
-                name : 'Squirtle',
-                tier : 'Top',
+                Name : 'Squirtle',
+                Tier : 'Top',
                 isStrong : ['Chrom', 'Incineroar', 'LittleMac', 'Richter'],
                 isWeak : ['Pikachu', 'Pichu', 'Ness', 'Shulk']
             }, 
             
             78 : {
-                name : 'Terry',
-                tier : 'Mid+',
-                attr : {
+                Name : 'Terry',
+                Tier : 'Mid+',
+                Attr : {
                     FullHop : '27',
                     Gravity : '0.09',
                     RunSpeed : '1.72',
@@ -561,9 +554,9 @@ export const counters = new Vuex.Store({
             },
             
             52 : {
-                name : 'ToonLink',
-                tier : 'Mid',
-                attr : {
+                Name : 'ToonLink',
+                Tier : 'Mid',
+                Attr : {
                     FullHop : '33.8',
                     Gravity : '0.081',
                     RunSpeed : '1.906',
@@ -575,23 +568,23 @@ export const counters = new Vuex.Store({
             },
             
             53 : {
-                name : 'Villager',
-                tier : 'Low+',
+                Name : 'Villager',
+                Tier : 'Low+',
                 isStrong : ['KingKRool', 'Ganondorf', 'DonkeyKong', 'Simon'],
                 isWeak : ['Palutena', 'Pikachu', 'Fox', 'Pichu']
             },
             
             54 : {
-                name : 'Wario',
-                tier : 'High',
+                Name : 'Wario',
+                Tier : 'High',
                 isStrong : ['DonkeyKong', 'Ganondorf', 'KingKRool', 'Bayonetta'],
                 isWeak : ['Lucina', 'Pikachu', 'Cloud', 'Marth']
             },
             
             55 : {
-                name : 'WiiFitTrainer',
-                tier : 'Mid',
-                attr : {
+                Name : 'WiiFitTrainer',
+                Tier : 'Mid',
+                Attr : {
                     FullHop : '35.6',
                     Gravity : '0.09',
                     RunSpeed : '1.866',
@@ -603,9 +596,9 @@ export const counters = new Vuex.Store({
             },
             
             68 : {
-                name : 'Wolf',
-                tier : 'High',
-                attr : {
+                Name : 'Wolf',
+                Tier : 'High',
+                Attr : {
                     FullHop : '32.02',
                     Gravity : '0.13',
                     RunSpeed : '1.54',
@@ -617,9 +610,9 @@ export const counters = new Vuex.Store({
             },
             
             79 : {
-                name : 'YoungLink',
-                tier : 'Mid+',
-                attr : {
+                Name : 'YoungLink',
+                Tier : 'Mid+',
+                Attr : {
                     FullHop : '33.66',
                     Gravity : '0.096',
                     RunSpeed : '1.749',
@@ -631,23 +624,16 @@ export const counters = new Vuex.Store({
             },
             
             57 : {
-                name : 'Zelda',
-                tier : 'Low+',
+                Name : 'Zelda',
+                Tier : 'Low+',
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
                 isWeak : ['Bowser', 'Daisy', 'Palutena', 'Joker']
             },
             
-            58 : {
-                name : 'ZeroSuitSamus',
-                tier : 'Top',
-                isStrong : ['Ganondorf', 'DonkeyKong', 'Ridley', 'KingKRool'],
-                isWeak : ['Shulk', 'Yoshi', 'Squirtle', 'Roy']
-            },
-            
             76 : {
-                name : 'BanjoKazooie',
-                tier : 'Mid',
-                attr : {
+                Name : 'BanjoKazooie',
+                Tier : 'Mid',
+                Attr : {
                     FallSpeed : '1.76',
                     FullHop : '29.8',
                     Weight : '106',
@@ -659,122 +645,127 @@ export const counters = new Vuex.Store({
             },
             
             56 : {
-                name : 'Yoshi',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
+                Name : 'Yoshi',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '2.046',
+                    Weight : '104',
+                    Gravity : '0.08',
+                    FallSpeed : '1.29',
+                    FullHop : '36.09',
                 },
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isWeak : ['Palutena', 'Joker', 'Link', 'ZeroSuitSamus']
             },
             
             77 : {
-                name : 'IceClimbers',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
+                Name : 'IceClimbers',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '1.53',
+                    Weight : '92',
+                    Gravity : '0.082',
+                    FallSpeed : '1.3',
+                    FullHop : '34.69',
                 },
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isWeak : ['Palutena', 'Joker', 'Link', 'ZeroSuitSamus']
             },
             
             31 : {
-                name : 'Mewtwo',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
+                Name : 'Mewtwo',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '2.255',
+                    Weight : '79',
+                    Gravity : '0.082',
+                    FallSpeed : '1.55',
+                    FullHop : '31.11',
                 },
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isWeak : ['Palutena', 'Joker', 'Link', 'ZeroSuitSamus']
             },
             
             
             49 : {
-                name : 'Sheik',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
+                Name : 'Sheik',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '2.42',
+                    Weight : '78',
+                    Gravity : '0.15',
+                    FallSpeed : '1.75',
+                    FullHop : '39',
                 },
                 isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isWeak : ['Palutena', 'Joker', 'Link', 'ZeroSuitSamus']
             },
             
             58 : {
-                name : 'ZeroSuitSamus',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
+                Name : 'ZeroSuitSamus',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '2.31',
+                    Weight : '80',
                     Gravity : '0.11',
+                    FallSpeed : '1.7',
+                    FullHop : '44.5',
                 },
-                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isStrong : ['KingKRool', 'Incineroar', 'DonkeyKong', 'KingDedede'],
+                isWeak : ['Pichu', 'Pikachu', 'Squirtle', 'Inkling']
             },
             
             80 : {
-                name : 'DarkSamus',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
+                OwnerId : 80,
+                Name : 'DarkSamus',
+                DisplayName : 'Dark Samus',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '1.654',
+                    Weight : '108',
                     Gravity : '0.11',
+                    FallSpeed : '0.075',
+                    FullHop : '37',
                 },
-                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isStrong : ['Ganondorf', 'Bowser', 'Incineroar', 'Luigi'],
+                isWeak : ['Wolf', 'Fox', 'Falco', 'Lucina']
             },
             
-            79 : {
-                name : 'Isabelle',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
+            81 : {
+                OwnerId : 81,
+                Name : 'Isabelle',
+                DisplayName : 'Isabelle',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '1.48',
+                    Weight : '88',
                     Gravity : '0.11',
+                    FallSpeed : '0.07',
+                    FullHop : '32.5',
                 },
-                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isStrong : ['Ganondorf', 'KingKRool', 'DonkeyKong', 'Incineroar'],
+                isWeak : ['Pikachu', 'Pichu', 'Palutena', 'YoungLink']
             },
             
             73 : {
-                name : 'KingKRool',
-                tier : 'Mid',
-                attr : {
-                    FallSpeed : '1.76',
-                    FullHop : '29.8',
-                    Weight : '106',
-                    RunSpeed : '2.18',
-                    Gravity : '0.11',
+                Name : 'KingKRool',
+                Tier : 'Mid',
+                Attr : {
+                    RunSpeed : '1.485',
+                    Gravity : '0.105',
+                    Weight : '133',
+                    FallSpeed : '1.7',
+                    FullHop : '33',
                 },
-                isStrong : ['Hero', 'BowserJr', 'PiranhaPlant', 'KingKRool'],
-                isWeak : ['Palutena', 'Joker', 'Link', 'Zero Suit Samus']
+                isStrong : ['LittleMac', 'Charizard', 'DonkeyKong', 'Incineroar'],
+                isWeak : ['Isabelle', 'Snake', 'Ness', 'Wolf']
             },
-            78 : {
-                name : 'minmin',
+            82 : {
+                OwnerId : 82,
+                Name : 'MinMin',
                 DisplayName : 'Min Min',
-                tier : 'Mid',
-                attr : {
+                Tier : 'Mid',
+                Attr : {
                     FallSpeed : '1.5',
                     FullHop : '29.8',
                     Weight : '104',
@@ -782,6 +773,21 @@ export const counters = new Vuex.Store({
                 },
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Bowser', 'KingKRool'],
                 isWeak : ['Pikachu', 'Pichu', 'Roy', 'Lucina']
+            },
+            83 : {
+                OwnerId : 83,
+                Name : 'Byleth',
+                DisplayName : 'Blyeth',
+                Tier : 'Mid',
+                Attr : {
+                    FallSpeed : '1.6',
+                    Gravity : '0.089',
+                    FullHop : '26.5',
+                    Weight : '97',
+                    RunSpeed : '1.43',
+                },
+                isStrong : ['DonkeyKong', 'Ganondorf', 'Bowser', 'Ridley'],
+                isWeak : ['Pikachu', 'Joker', 'YoungLink', 'Wolf']
             }
         },
     }

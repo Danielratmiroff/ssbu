@@ -6,7 +6,8 @@ import VueTippy, { TippyComponent } from "vue-tippy";
 import ProgressBar from 'vue-simple-progress'
 import { store } from './store/store'
 import axios from "axios";
-import VueAxios from "vue-axios";// import VueRouter from 'vue-router'
+import VueAxios from "vue-axios";
+// import VueRouter from 'vue-router'
 
 Vue.use(Vuex)
 Vue.use(VueTippy)
@@ -28,7 +29,6 @@ import './registerServiceWorker'
 //   ]
 // })
 
-Vue.component("tippy", TippyComponent);
 new Vue({
   render: h => h(App),
   store,

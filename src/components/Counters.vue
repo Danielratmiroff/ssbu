@@ -74,7 +74,6 @@ export default {
 
     methods: {
         openCounterDetails(item) {
-            window.scrollTo(0, 0)
             this.$emit('openCounterDetails', item);
         },
         weakAgainst(id) {

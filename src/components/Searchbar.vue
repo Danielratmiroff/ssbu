@@ -3,9 +3,11 @@
     v-on:keyup.enter="search(input)" 
     class="searchBox h-8 rounded-md border border-primary-grey flex justify-between 
             sm:mx-4 lg:w-1/3
-            ">
+            "
+            style="background-color:white;">
         <input type="search" placeholder="Search your character" v-model="input"
-        class="pl-3 focus:outline-none text-sm w-full mr-3">
+        class="pl-3 focus:outline-none text-sm w-full mr-3
+            sm:mr-6 md:mr-8">
 
         <div @click="search(input)" class="bg-primary-grey h-full flex justify-center w-12
             sm:-ml-4">
