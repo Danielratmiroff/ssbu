@@ -7,7 +7,7 @@ Vue.use(Vuex);
 // Store Tiers .
 // Store values which are not return from the API but they are still valuable for us.
 
-export const counters = new Vuex.Store({
+export const charsData = new Vuex.Store({
     state: {
         chars : {
 
@@ -79,15 +79,15 @@ export const counters = new Vuex.Store({
                     RunSpeed : '2.18',
                     Gravity : '0.11',
                 },
-                isStrong : ['Ganondorf', 'Chrom', 'DonkeyKong', 'Mega man'],
+                isStrong : ['Ganondorf', 'Chrom', 'DonkeyKong', 'MegaMan'],
                 isWeak : ['Bowser Jr.', 'Ike', 'Pichu', 'Pikachu']
             },
             
             9 : {
                 Name : 'DiddyKong',
                 Tier : 'Mid',
-                isStrong : ['Ganondorf', 'DonkeyKong', 'Ridley', 'Dr Mario'],
-                isWeak : ['Pikachu', 'Pichu', 'ROB', 'Wolf']
+                isStrong : ['Ganondorf', 'DonkeyKong', 'Ridley', 'DrMario'],
+                isWeak : ['Pikachu', 'Pichu', 'Rob', 'Wolf']
             },
             
             10 : {
@@ -158,7 +158,7 @@ export const counters = new Vuex.Store({
                 Name : 'Fox',
                 Tier : 'High',
                 isStrong : ['DarkSamus', 'Samus', 'KingKRool', 'Ridley'],
-                isWeak : ['Lucina', 'Pikachu', 'ROB', 'Pichu']
+                isWeak : ['Lucina', 'Pikachu', 'Rob', 'Pichu']
             },
             
             15 : {
@@ -185,8 +185,8 @@ export const counters = new Vuex.Store({
                     RunSpeed : '1.84',
                     Gravity : '0.094',
                 },
-                isStrong : ['Ganondorf', 'Incineroar', 'Megaman', 'Ryu'],
-                isWeak : ['Roy', 'Pikachu', 'Fox', 'ROB']
+                isStrong : ['Ganondorf', 'Incineroar', 'MegaMan', 'Ryu'],
+                isWeak : ['Roy', 'Pikachu', 'Fox', 'Rob']
             },
             
             17 : {
@@ -207,14 +207,14 @@ export const counters = new Vuex.Store({
                 Name : 'Inkling',
                 Tier : 'High',
                 isStrong : ['Ganondorf', 'CaptainFalcon', 'DonkeyKong', 'Ridley'],
-                isWeak : ['Lucina', 'ROB', 'Marth', 'Cloud']
+                isWeak : ['Lucina', 'Rob', 'Marth', 'Cloud']
             },
             
             72 : {
                 Name : 'Ivysaur',
                 Tier : 'Top',
-                isStrong : ['LittleMac', 'ROB', 'Snake', 'KingDedede'],
-                isWeak : ['Megaman', 'Palutena', 'Wolf', 'YoungLink']
+                isStrong : ['LittleMac', 'Rob', 'Snake', 'KingDedede'],
+                isWeak : ['MegaMan', 'Palutena', 'Wolf', 'YoungLink']
             },
             
             18 : {
@@ -270,7 +270,7 @@ export const counters = new Vuex.Store({
                 Name : 'LittleMac',
                 Tier : 'Low',
                 isStrong : ['Lucario', 'Ganondorf', 'Charizard', 'Bowser'],
-                isWeak : ['Ridley', 'Isabelle', 'Palutena', 'Dark Pit']
+                isWeak : ['Ridley', 'Isabelle', 'Palutena', 'DarkPit']
             },
             
             23 : {
@@ -291,7 +291,7 @@ export const counters = new Vuex.Store({
                 Name : 'Lucina',
                 Tier : 'High',
                 isStrong : ['Kirby', 'Ganondorf', 'Charizard', 'LittleMac'],
-                isWeak : ['YoungLink', 'Snake', 'Megaman', 'Inkling']
+                isWeak : ['YoungLink', 'Snake', 'MegaMan', 'Inkling']
             },
             
             26 : {
@@ -325,15 +325,15 @@ export const counters = new Vuex.Store({
                     FallSpeed : '1.8',
                     Weight : '102',
                 },
-                isStrong : ['KingDedede', 'Ridleu', 'Ganondorf', 'DonkeyKong'],
+                isStrong : ['KingDedede', 'Ridley', 'Ganondorf', 'DonkeyKong'],
                 isWeak : ['Wolf', 'Olimar', 'Fox', 'Pikachu']
             },
             
             30 : {
                 Name : 'MetaKnight',
                 Tier : 'Low+',
-                isStrong : ['LittleMac', 'Dr Mario', 'Squirtle', 'Sonic'],
-                isWeak : ['Megaman', 'Cloud', 'Joker', 'Ness']
+                isStrong : ['LittleMac', 'DrMario', 'Squirtle', 'Sonic'],
+                isWeak : ['MegaMan', 'Cloud', 'Joker', 'Ness']
             },
             
             32 : {
@@ -346,8 +346,8 @@ export const counters = new Vuex.Store({
                     FallSpeed : '1.92',
                     Weight : '94',
                 },
-                isStrong : ['KingKRool', 'BowserJr', 'ROB', 'Bayonetta'],
-                isWeak : ['Palutena', 'Richter', 'Pichu', 'Megaman']
+                isStrong : ['KingKRool', 'BowserJr', 'Rob', 'Bayonetta'],
+                isWeak : ['Palutena', 'Richter', 'Pichu', 'MegaMan']
             },
             
             33 : {
@@ -396,7 +396,7 @@ export const counters = new Vuex.Store({
                 Name : 'Olimar',
                 Tier : 'High',
                 isStrong : ['Pichu', 'Incineroar', 'LittleMac', 'KingKRool'],
-                isWeak : ['ROB', 'Shulk', 'Daisy', 'Wolf']
+                isWeak : ['Rob', 'Shulk', 'Daisy', 'Wolf']
             },
             
             38 : {
@@ -444,7 +444,7 @@ export const counters = new Vuex.Store({
             42 : {
                 Name : 'Pit',
                 Tier : 'Low',
-                isStrong : ['LittleMac', 'Ryu', 'Ganondorf', 'Captain Falco'],
+                isStrong : ['LittleMac', 'Ryu', 'Ganondorf', 'CaptainFalcon'],
                 isWeak : ['Pikachu', 'Lucina', 'Pichu', 'Snake']
             },
             
@@ -458,7 +458,7 @@ export const counters = new Vuex.Store({
             71 : {
                 Name : 'Ridley',
                 Tier : 'Low+',
-                isStrong : ['Ganondorf', 'LittleMac', 'Incineroar', 'Kind Dedede'],
+                isStrong : ['Ganondorf', 'LittleMac', 'Incineroar', 'KingDedede'],
                 isWeak : ['Pikachu', 'Pichu', 'Ness', 'Palutena']
             },
             
@@ -487,7 +487,7 @@ export const counters = new Vuex.Store({
                 Name : 'Roy',
                 Tier : 'High',
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Bowser', 'Charizard'],
-                isWeak : ['Snake', 'Pikachu', 'ROB', 'YoungLink']
+                isWeak : ['Snake', 'Pikachu', 'Rob', 'YoungLink']
             },
             
             47 : {
@@ -508,7 +508,7 @@ export const counters = new Vuex.Store({
                 Name : 'Shulk',
                 Tier : 'High',
                 isStrong : ['LittleMac', 'Jigglypuff', 'CaptainFalcon', 'Ridley'],
-                isWeak : ['Snake', 'Pikachu', 'ROB', 'Palutena']
+                isWeak : ['Snake', 'Pikachu', 'Rob', 'Palutena']
             },
             
             66 : {
@@ -529,7 +529,7 @@ export const counters = new Vuex.Store({
                 Name : 'Sonic',
                 Tier : 'Mid+',
                 isStrong : ['Ridley', 'BowserJr', 'Zelda', 'Incineroar'],
-                isWeak : ['Pikachu', 'Wolf', 'Lucina', 'Megaman']
+                isWeak : ['Pikachu', 'Wolf', 'Lucina', 'MegaMan']
             },
             
             67 : {
@@ -592,7 +592,7 @@ export const counters = new Vuex.Store({
                     Weight : '96',
                 },
                 isStrong : ['Ganondorf', 'DonkeyKong', 'Ridley', 'Charizard'],
-                isWeak : ['Pichu', 'Squirtle', 'Pikachu', 'Megaman']
+                isWeak : ['Pichu', 'Squirtle', 'Pikachu', 'MegaMan']
             },
             
             68 : {

@@ -88,6 +88,7 @@ export default {
             else {
                 window.scrollTo(0, 0)
             }
+
             this.detailsScreen = true;  
             this.dashboardActive = false;
             this.smooth = true;

@@ -72,7 +72,9 @@
                         </ul>
                     </div>
 
-                    <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails" /> 
+                    <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails"> 
+                        {{this.char.DisplayName}}
+                    </Counters>
     
                 </div>
             </div>

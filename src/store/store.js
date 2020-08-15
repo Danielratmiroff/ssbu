@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
 import VueAxios from "vue-axios";
-import { counters } from "./counters.js";
+import { charsData } from "./chars.js";
 
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
@@ -10,7 +10,7 @@ Vue.use(VueAxios, axios);
 export const store = new Vuex.Store({
     strict: true,
     modules: {
-        counters
+        charsData
     },
 
     state: {
@@ -35,11 +35,11 @@ export const store = new Vuex.Store({
     },
     getters: {
         getTier: (state) => (id) => {
-            return state.counters.chars[id].Tier
+            return state.charsData.chars[id].Tier
         },
         
         getStatsFromStore: (state) => (id) => {
-            return state.counters.chars[id].Attr
+            return state.charsData.chars[id].Attr
         },
         
         maxValue: (state) => (elm) => {
@@ -47,7 +47,7 @@ export const store = new Vuex.Store({
         },
         
         getCounters: (state) => (id, list) => {
-            const counterNames = state.counters.chars[id][list];
+            const counterNames = state.charsData.chars[id][list];
             const charsAll = state.charsAll;
 
            // Would be cool to reuse filtering function from store.js
@@ -97,7 +97,7 @@ export const store = new Vuex.Store({
             const all = state.charsUnique;
 
             const missingChars = ['Isabelle', 'Byleth', 'MinMin', 'DarkSamus'];
-            const counterStore = state.counters.chars;
+            const counterStore = state.charsData.chars;
             const objectChars = JSON.parse(JSON.stringify(counterStore));
             
             const charsData = Object.keys(objectChars)

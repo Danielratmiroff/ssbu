@@ -5,7 +5,7 @@
         </p>
 
         <p class="text-primary-dark mt-6 leading-tight">
-            <b>Weak</b> against:
+          <slot /> is <b class="text-secondary-red">Weak</b> against:
         </p>
 
         <!-- Weak Against -->
@@ -29,7 +29,7 @@
         </div>
      
         <p class="text-primary-dark mt-12 leading-tight">
-            <b>Strong</b> against:
+            <slot /> is <b class="text-secondary-green">Strong</b> against:
         </p>
 
         <!-- Strong Against -->
@@ -87,8 +87,9 @@ export default {
             return require(`@/assets/chars/${cleanName}.png`)
         },
         getBackground(idx, color) {
-            const result = 7 - idx
-            return `bg-${color}-${result}0`
+            console.log(idx, color)
+            const colorState = color === 'red' ? 'bg-red-50' : 'bg-green-50';
+            return colorState
         }
     }
 }

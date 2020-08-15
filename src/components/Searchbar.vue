@@ -2,7 +2,7 @@
     <div 
     v-on:keyup.enter="search(input)" 
     class="searchBox h-8 rounded-md border border-primary-grey flex justify-between 
-            sm:mx-4 lg:w-1/3
+            sm:mx-4 lg:w-1/3 lg:my-5
             "
             style="background-color:white;">
         <input type="search" placeholder="Search your character" v-model="input"
