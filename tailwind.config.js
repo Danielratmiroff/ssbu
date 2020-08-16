@@ -13,6 +13,7 @@ module.exports = {
         blue: '#1D6DE3',
         grey: '#F0F4FF',
       },
+
       secondary: {
         red: '#cc1b1b',
         lightblue: '#3DADF2',
@@ -21,6 +22,7 @@ module.exports = {
         green: '#26a35b',
         blue: '#436af7',
       },
+
       grey: {
         10: '#E9EAED',
         20: '#D4D5DB',
@@ -33,6 +35,7 @@ module.exports = {
         90: '#3C445F',
         100: '#262F4D',
       },
+
       red: {
         10: '#FFF2F0',
         20: '#FFE5E0',
@@ -46,6 +49,7 @@ module.exports = {
         90: '#BF3B1B',
         100: '#D71C1C',
       },
+
       green: {
         10: '#EDFFF5',
         20: '#CBF8DE',
@@ -57,6 +61,7 @@ module.exports = {
         80: '#2EC06C',
         90: '#27AE60',
       },
+
       tier: {
         A: '#D71C1C',
         B: '#FF9619',
@@ -66,12 +71,14 @@ module.exports = {
         F: '#7FBFFF',
       },
     },
+
     extend: {
       boxShadow: {
         huge: '0 30px 60px -15px rgba(0, 0, 0, .25)'
       }
     }
   },
+  
   variants: {},
   plugins: [],
   purge: {

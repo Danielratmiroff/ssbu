@@ -3,9 +3,11 @@ import Vuex from 'vuex'
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { charsData } from "./chars.js";
+import { listUniqueValue } from "@/components/mixins/listUniqueValue.js"
 
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
+
 
 export const store = new Vuex.Store({
     strict: true,
@@ -49,18 +51,17 @@ export const store = new Vuex.Store({
         getCounters: (state) => (id, list) => {
             const counterNames = state.charsData.chars[id][list];
             const charsAll = state.charsAll;
-
-           // Would be cool to reuse filtering function from store.js
-           // Create a reduce function to be reused since this is repeating itself multiple times
-           const counters = counterNames.reduce((acc , current) => {
+            
+            const counters = counterNames.reduce((acc , current) => {
                 const names = charsAll.find(elm => elm.Name === current);
                 if (names) { 
-                    return acc.concat(names)
-                 }
+                    return acc.concat(names) 
+                }
                 else { 
-                    return acc
+                    return acc 
                 }
             }, []);
+
             return counters
         },
     },
@@ -68,22 +69,13 @@ export const store = new Vuex.Store({
     mutations: {
         STORE_UNIQUE(state, all) {
             // Remove duplicates from array
-            const uniqueChars = all.reduce((acc, current) => {
-                const x = acc.find(item => item.OwnerId === current.OwnerId);
-                if (!x) {
-                    return acc.concat([current]);
-                } else {
-                    return acc;
-                }
-            }, []);
-
-            state.charsUnique = uniqueChars;
+            state.charsUnique = listUniqueValue(all, 'OwnerId')
         },
 
         STORE_SORTED(state) {
             // Sort and store array of characters 
             const all = state.charsUnique;
-            const allSorted = all.sort(function(a, b) {
+            const allSorted = all.sort((a, b) => {
                 const textA = a.Name.toUpperCase();
                 const textB = b.Name.toUpperCase();
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;

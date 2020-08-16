@@ -121,6 +121,10 @@ html {
     @apply bg-primary-white;
 }
 
+p {
+    text-rendering: optimizeLegibility;
+}
+
 .smoothScroll {
     scroll-behavior: smooth;
 }

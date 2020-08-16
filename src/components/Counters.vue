@@ -1,22 +1,19 @@
 <template>
-    <div class="mt-6 w-full">
-        <p class="font-bold text-lg text-primary-blue">
-            Counters Picks
+    <div class="w-full my-5">
+        
+        <p class="text-primary-dark leading-tight">
+          <slot /> is <b>{{this.categoryText}}</b> against:
         </p>
 
-        <p class="text-primary-dark mt-6 leading-tight">
-          <slot /> is <b class="text-secondary-red">Weak</b> against:
-        </p>
-
-        <!-- Weak Against -->
-        <div v-for="(item, idx) in this.weakAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
+        <div v-for="item in this.Against(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
+           
             <div @click="openCounterDetails(item)" class="relative h-full w-full flex items-end">                
                 
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
                 <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between shadow-md" 
-                :class="getBackground(idx, 'red')"
-                style="height:4.5rem;">
+                    :class="getBackground()"
+                    style="height:4.5rem;">
                 
                     <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
                         {{item.DisplayName}}
@@ -27,30 +24,7 @@
                 </div>
             </div>
         </div>
-     
-        <p class="text-primary-dark mt-12 leading-tight">
-            <slot /> is <b class="text-secondary-green">Strong</b> against:
-        </p>
 
-        <!-- Strong Against -->
-        <div v-for="(item, idx) in this.strongAgainst(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
-            <div @click="openCounterDetails(item)" class="relative h-full w-full flex items-end">                
-                
-                <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
-                
-                <div class="overflow-hidden w-full rounded-md px-6 flex items-center justify-between shadow-md" 
-                :class="getBackground(idx, 'green')"
-                style="height:4.5rem;">
-                
-                    <p class="font-bold text-primary-white leading-tight" style='font-size:1.25rem;'>
-                        {{item.DisplayName}}
-                    </p>
-                
-                    <img src="@/assets/icon.png" class="h-full w-auto -mr-2" />
-
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -61,35 +35,36 @@ export default {
     name: 'Counters',
 
     props: {
-        id: Number
+        id: Number,
+        category: String
+    },
+
+    data() {
+        return {
+            categoryText : this.category.replace(/is/i, '')
+        }
     },
 
     computed: {
         ...mapGetters(['getCounters'])
     },
 
-    data() {
-        return {}
-    },
-
     methods: {
         openCounterDetails(item) {
             this.$emit('openCounterDetails', item);
         },
-        weakAgainst(id) {
-            return this.getCounters(id, 'isWeak');
+
+        Against(id) {
+            return this.getCounters(id, this.category);
         },
-        strongAgainst(id) {
-            return this.getCounters(id, 'isStrong');
-        },
-         getImg(name) {
+        
+        getImg(name) {
             const cleanName = name.toLowerCase()
-            return require(`@/assets/chars/${cleanName}.png`)
+            return require(`@/assets/chars/${cleanName}.png`);
         },
-        getBackground(idx, color) {
-            console.log(idx, color)
-            const colorState = color === 'red' ? 'bg-red-50' : 'bg-green-50';
-            return colorState
+
+        getBackground() {
+            return this.category === 'isWeak' ? 'bg-red-50' : 'bg-green-50';
         }
     }
 }

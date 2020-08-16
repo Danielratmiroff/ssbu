@@ -72,10 +72,28 @@
                         </ul>
                     </div>
 
-                    <Counters :id="this.char.OwnerId" v-on:openCounterDetails="AppOpenCounterDetails"> 
+                    <p class="font-bold mt-8 text-lg text-primary-blue">
+                        Counters Picks
+                    </p>
+
+                    <Counters 
+                        :id="this.char.OwnerId" 
+                        :category="'isWeak'" 
+                        @openCounterDetails="AppOpenCounterDetails"> 
+
                         {{this.char.DisplayName}}
+
                     </Counters>
-    
+                    <div class="h-2" />
+                    <Counters 
+                        :id="this.char.OwnerId"
+                        :category="'isStrong'" 
+                        @openCounterDetails="AppOpenCounterDetails"> 
+
+                        {{this.char.DisplayName}}
+
+                    </Counters>
+
                 </div>
             </div>
         </div>
@@ -87,6 +105,7 @@ import axios from "axios";
 import { mapGetters } from 'vuex';
 import Counters from './Counters.vue';
 import Clues from './Clues.vue';
+import { listUniqueValue } from "@/components/mixins/listUniqueValue.js"
 
 export default {
     name: 'Attributes',
@@ -159,7 +178,8 @@ export default {
             }
      
             // Remove duplicates
-            const attrUnique = this.uniqueAttr(attrFilter);
+            const attrUnique = listUniqueValue(attrFilter, 'Name');
+
             this.charAttr = attrUnique;
         },
 
@@ -189,19 +209,6 @@ export default {
                 default:
                     return null;
             }
-        },
-
-        uniqueAttr(elm) {
-            // Would be cool to reuse filtering function from store.js
-                const unique = elm.reduce((acc, current) => {
-                const x = acc.find(item => item.Name === current.Name);
-                if (!x) {
-                    return acc.concat([current]);
-                } else {
-                    return acc;
-                }
-            }, []);
-            return unique
         },
 
         getImg(elm) {
