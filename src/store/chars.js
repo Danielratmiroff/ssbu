@@ -1,11 +1,16 @@
+
+/********************
+ 
+Store counters .
+Store Tiers .
+Store values which are not return from the API but they are still valuable for us.
+ 
+********************/
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex);
-
-// Store counters .
-// Store Tiers .
-// Store values which are not return from the API but they are still valuable for us.
 
 export const charsData = new Vuex.Store({
     state: {

@@ -45,9 +45,7 @@ export default {
         }
     },
 
-    computed: {
-        ...mapGetters(['getCounters'])
-    },
+    computed: mapGetters(['getCounters']),
 
     methods: {
         openCounterDetails(item) {

@@ -2,14 +2,20 @@
     <div id="app" class="bg-primary-white">
         <div class="flex bg-primary-white mb-3 h-16 py-2 px-3 md:mx-4 md:my-2 
                  mb-3 justify-between items-center">
+
             <img @click="loadDashboard()" src="./assets/logo.png" class="max-h-full" />
+
             <div class="flex items-center navbar-item rounded-md border-2 border-primary-blue py-1 px-2 text-primary-blue font-bold
-            md:text-lg
-            ">About</div>
+               md:text-lg
+              ">
+                About
+            </div>
+
         </div>
+
         <div class="wrap p-3 bg-primary-white w-full pt-1
-        md:p-0
-        ">
+          md:p-0
+          ">
             <!-- <nav>
                 Router
                     <router-link to="/">Home</router-link>
@@ -20,17 +26,20 @@
             -->
             <Start 
                 @openDashboard="loadDashboard" 
-                v-if='this.start'
+                v-if='this.startScreen'
             />
+
             <About 
                 @closeAbout="unloadAbout" 
                 v-if='this.aboutScreen'
                  />
+
             <Dashboard class="inactive" 
-                :class="{ isActive : dashboardActive}" 
+                :class="{ isActive : dashboardScreen}" 
                 @openDetails="loadDetails" 
                 @openAbout='loadAbout'
                  />
+
             <Attributes 
                 @closeDetails="unloadDetails" 
                 @PassCounterDetails="loadDetails" 
@@ -61,8 +70,8 @@ export default {
         return {
             detailsScreen: false,
             aboutScreen: false,
-            dashboardActive: false,
-            start: true,
+            dashboardScreen: false,
+            startScreen: true,
             smooth: false,
             char: Object,
         }
@@ -71,9 +80,9 @@ export default {
     methods: {
         
         loadDashboard() {
-            this.start = false;
+            this.startScreen = false;
             this.detailsScreen = false;
-            this.dashboardActive = true;
+            this.dashboardScreen = true;
             this.smooth = false;
         },
 
@@ -90,25 +99,26 @@ export default {
             }
 
             this.detailsScreen = true;  
-            this.dashboardActive = false;
+            this.dashboardScreen = false;
             this.smooth = true;
+            
             // Pass char values to children
             this.char = elm;
         },
 
         unloadDetails() {
             this.detailsScreen = false;
-            this.dashboardActive = true;
+            this.dashboardScreen = true;
         },
 
         loadAbout() {
             this.aboutScreen = true;
-            this.dashboardActive = false;
+            this.dashboardScreen = false;
         },
 
         unloadAbout() {
             this.aboutScreen = false;
-            this.dashboardActive = true;
+            this.dashboardScreen = true;
         },
 
     }
@@ -132,7 +142,7 @@ p {
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Nunito', 'Helvetica', sans-serif;
+    font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
     font-size: 16px;
     max-width:1260px;
     margin: 0 auto

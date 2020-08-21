@@ -1,3 +1,11 @@
+/********************
+ 
+Handles & manages all data retrieved from:
+    * API
+    * charsData vuex module
+ 
+********************/
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
@@ -35,6 +43,7 @@ export const store = new Vuex.Store({
         charsAll : [],
 
     },
+
     getters: {
         getTier: (state) => (id) => {
             return state.charsData.chars[id].Tier

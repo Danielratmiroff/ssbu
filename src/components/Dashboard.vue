@@ -7,8 +7,12 @@
             Discover more about your favorite characters
         </p>
         
-        <Searchbar v-on:filterBySearch="searchChar" />
-        <Characters v-on:openDetails="openAttributes" :charList='this.showList' />
+        <Searchbar @filterBySearch="searchChar" />
+
+        <Characters 
+            @openDetails="openAttributes" 
+            :charList='this.showList' 
+            />
     </div>
 </template>
 
@@ -36,9 +40,7 @@ export default {
         this.setCharList();
     },
 
-    computed: {
-        ...mapState(['charsAll'])
-    },
+    computed: mapState(['charsAll']),
 
     methods: {
         searchChar(elm) {
