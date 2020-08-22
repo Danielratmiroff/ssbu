@@ -6,8 +6,9 @@
         </p>
 
         <div v-for="item in this.Against(id)" :key="item.OwnerId" class="h-24 w-full flex items-center">
-           
-            <div @click="openCounterDetails(item)" class="relative h-full w-full flex items-end">                
+             <router-link 
+                    :to="{ name : 'Attributes', params : { id : item.OwnerId } }" 
+                     class="relative h-full w-full flex items-end">                
                 
                 <img :src="getImg(item.Name)" class="absolute min-w-2/5 h-full max-h-16 right-0 mr-6 z-1" />
                 
@@ -22,7 +23,7 @@
                     <img src="@/assets/icon.png" class="h-full w-auto -mr-2" />
 
                 </div>
-            </div>
+            </router-link>
         </div>
 
     </div>
@@ -45,7 +46,9 @@ export default {
         }
     },
 
-    computed: mapGetters(['getCounters']),
+    computed: {
+        ...mapGetters(['getCounters'])
+    },
 
     methods: {
         openCounterDetails(item) {

@@ -46,6 +46,7 @@ export const store = new Vuex.Store({
 
     getters: {
         getTier: (state) => (id) => {
+            if(!id) { return }
             return state.charsData.chars[id].Tier
         },
         
@@ -58,6 +59,7 @@ export const store = new Vuex.Store({
         },
         
         getCounters: (state) => (id, list) => {
+            if(!id) { return }
             const counterNames = state.charsData.chars[id][list];
             const charsAll = state.charsAll;
             
@@ -152,6 +154,7 @@ export const store = new Vuex.Store({
     
     actions: {
         async loadChars({commit}) {
+
             const ult = "https://api.kuroganehammer.com/api/characters?game=ultimate";
             const smash = "https://api.kuroganehammer.com/api/characters?game=smash4";
             

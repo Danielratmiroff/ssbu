@@ -1,30 +1,21 @@
 <template>
 <div>
     <div class="full-overlay bg-contain bg-secondary-lightblue overflow-hidden">
-        
         <div class="relative h-full">
-
             <img src="@/assets/logo.png" class="pt-6 w-16 m-auto">
-            
             <div class="font-bold px-4 text-center leading-tight text-primary-white" 
                 style="font-size:2.3rem;
                 ">
                 Super Smash Pros
             </div>
-
             <img src="@/assets/kirby-start.png" class="start-images kirby" />
-
             <img src="@/assets/logo-start.png" class="start-images logo" />
 
-            <div class="absolute bottom-0 mb-16 w-full z-50">
-
-                <p @click="openDashboard()" 
-                    class="text-center w-2/4 m-auto border-primary-blue bg-primary-blue text-primary-white font-bold rounded-lg p-3 border-2 hover:bg-primary-dark cursor-pointer hover:border-primary-dark transition ease-in-out duration-300 ">
-                    CHARACTERS
+            <router-link :to="{ name : 'Dashboard' }" class="absolute bottom-0 mb-16 w-full z-50">
+                <p class="text-center w-2/4 m-auto border-primary-blue bg-primary-blue text-primary-white font-bold rounded-lg p-3 border-2 hover:bg-primary-dark cursor-pointer hover:border-primary-dark transition ease-in-out duration-300 ">
+                    Characters  
                 </p>
-
-            </div>
-
+            </router-link>
         </div>
     </div>
     </div>
@@ -36,7 +27,7 @@ export default {
 
     methods: {
         openDashboard() {
-            this.$emit('openDashboard')
+            this.$emit('loadDashboard')
         }
     }
 }

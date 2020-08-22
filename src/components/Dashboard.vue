@@ -1,18 +1,16 @@
 <template>
-    <div>
+    <div class="px-3 py-1 md:px-3">
         <p class="text-primary-dark font-bold mt-3 mb-1 sm:ml-4" style="font-size:1.45rem">
             Character's Stats
         </p>
         <p class="text-primary-dark mb-4 sm:ml-4 leading-tight">
             Discover more about your favorite characters
         </p>
-        
-        <Searchbar @filterBySearch="searchChar" />
 
-        <Characters 
-            @openDetails="openAttributes" 
-            :charList='this.showList' 
-            />
+        <Searchbar @filterBySearch="searchChar" />
+        <keep-alive>
+            <Characters :charList='this.showList' />
+        </keep-alive>
     </div>
 </template>
 
@@ -51,13 +49,6 @@ export default {
             this.showList = this.charsAll;
         },
 
-        openAttributes(item) {
-            this.$emit('openDetails', item);
-        },
-
-        openAbout() {
-            this.$emit('openAbout');
-        },
     }
 }
 </script>
