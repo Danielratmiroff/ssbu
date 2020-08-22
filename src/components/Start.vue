@@ -41,7 +41,6 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
     z-index: 10;
 }
 
@@ -55,16 +54,15 @@ export default {
 }
 
 .kirby {
-    left:-50%;
     top: 2%;
-    width: 200%;
+    width: 100%;
     z-index: -1;
 }
 
 .logo {
-    left:-30%;
+    left:-10%;
     top:5%;
-    width: 175%;
+    width: 115%;
     mix-blend-mode: screen;
     z-index: -2;
 }

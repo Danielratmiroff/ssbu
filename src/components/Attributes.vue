@@ -141,7 +141,7 @@ export default {
             attrUnique.forEach(item => {
                 reqKeys[item.Name] = item.Values[0].Value
             });
-            
+
             this.charAttr = reqKeys;
         },
 
