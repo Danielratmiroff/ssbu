@@ -137,11 +137,11 @@ export default {
      
             const attrUnique = listUniqueValue(attrFilter, 'Name');
             
-            let reqKeys = {};
-            attrUnique.forEach(item => {
-                reqKeys[item.Name] = item.Values[0].Value
-            });
-
+            const reqKeys = attrUnique.reduce((acc, current) => {
+                acc[current.Name] = current.Values[0].Value
+                return acc
+            }, {})
+ 
             this.charAttr = reqKeys;
         },
 
