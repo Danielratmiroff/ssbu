@@ -8,7 +8,7 @@
                 arrow : true,
                 arrowType : 'default',
                 theme : 'google',
-                trigger : 'click'
+                trigger : 'hover'
                 }">
             ?
         </button>
