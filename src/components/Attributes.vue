@@ -1,6 +1,17 @@
 <template>
   <div class="overlay">
-    <div class="relative" :class="this.char.Background">
+    <div v-if="attrFetching" class="relative w-full h-full">
+      <progress-bar
+        size="medium"
+        bg-color="#F0F4FF"
+        bar-color="linear-gradient(90deg, rgba(0,194,255,1) 0%, rgba(127,109,242,1) 78%)"
+        :val="progressBar"
+        :max="100"
+        class="progressBar"
+      />
+    </div>
+
+    <div v-else class="relative" :class="this.char.Background">
       <div
         class="px-4 py-2 sm:flex sm:flex-row-reverse sm:justify-evenly
                                 sm:max-w-lg m-auto"
@@ -109,26 +120,39 @@
         charAttr: Array,
         notFoundInAPI: Boolean,
         attrFound: 0,
+        attrFetching: true,
+        progressBar: 1,
       };
     },
 
     watch: {
       $route({ params }) {
         this.id = params.id;
-        this.getAttr(this.id);
         this.char = this.getId(this.id, this.charsAll);
+        this.getAttr(this.id);
       },
     },
 
     async created() {
-      this.progressBar = 1;
+      setTimeout(() => {
+        this.progressBar = 75;
+      }, 50);
+
       await this.getAttr(this.id);
+
+      this.progressBar = 100;
+
       this.char = this.getId(this.id, this.charsAll);
+
+      setTimeout(() => {
+        this.attrFetching = false;
+      }, 120);
     },
 
     methods: {
       async getAttr(id) {
         this.attrFound = 0;
+
         const ultimate = await this.fetchAttr(id, "ultimate");
         const isFound = ultimate && ultimate.length != 0;
 
@@ -137,7 +161,6 @@
         const attrFilter = attr.filter((name) => {
           return this.chosenAttr(name.Name);
         });
-
         // if API doesn't return enough attributes
         if (this.attrFound < 4) {
           this.charAttr = this.getStatsFromStore(id);

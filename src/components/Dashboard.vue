@@ -15,9 +15,9 @@
     <div class="relative w-full h-full">
       <progress-bar
         v-if="progressBarShow"
-        size="big"
+        size="medium"
         bg-color="#F0F4FF"
-        bar-color="linear-gradient(90deg, rgba(127,109,242,1) 0%, rgba(61,173,242,1) 78%)"
+        bar-color="linear-gradient(90deg, rgba(0,194,255,1) 0%, rgba(127,109,242,1) 78%)"
         :val="progressBar"
         :max="100"
         class="progressBar"
@@ -45,19 +45,16 @@
     data() {
       return {
         showList: Array,
-        progressBar: Number,
+        progressBar: 0,
         progressBarShow: Boolean,
       };
     },
 
     async created() {
-      this.progressBar = 10;
-      await this.$store.dispatch("loadChars");
-      this.progressBar = 100;
-      setTimeout(() => {
-        this.setCharList();
-        this.progressBarShow = false;
-      }, 250);
+      if (this.charsAll.length < 80) {
+        await this.loadFirstTime();
+      }
+      this.setCharList();
     },
 
     computed: mapState(["charsAll"]),
@@ -70,19 +67,34 @@
       setCharList() {
         this.showList = this.charsAll;
       },
+
+      async loadFirstTime() {
+        setTimeout(() => {
+          this.progressBar = 75;
+        }, 75);
+
+        await this.$store.dispatch("loadChars");
+
+        this.progressBar = 100;
+
+        setTimeout(() => {
+          this.setCharList();
+          this.progressBarShow = false;
+        }, 200);
+      },
     },
   };
 </script>
 
-<style scoped>
+<style>
   .progressBar {
-    width: 70%;
+    width: calc(100% - 2rem);
     position: absolute;
     top: 0;
     height: 100%;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 3rem auto 0 auto;
+    margin: 3rem auto;
   }
 </style>
