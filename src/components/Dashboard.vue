@@ -81,7 +81,6 @@
         setTimeout(() => {
           this.setCharList();
           this.progressBarShow = false;
-          console.log(this.progressBarShow);
         }, 200);
       },
     },
