@@ -46,7 +46,7 @@
       return {
         showList: Array,
         progressBar: 0,
-        progressBarShow: Boolean,
+        progressBarShow: false,
       };
     },
 
@@ -69,6 +69,7 @@
       },
 
       async loadFirstTime() {
+        this.progressBarShow = true;
         setTimeout(() => {
           this.progressBar = 75;
         }, 75);
@@ -80,6 +81,7 @@
         setTimeout(() => {
           this.setCharList();
           this.progressBarShow = false;
+          console.log(this.progressBarShow);
         }, 200);
       },
     },
