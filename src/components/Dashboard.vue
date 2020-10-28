@@ -71,17 +71,15 @@
       async loadFirstTime() {
         this.progressBarShow = true;
         setTimeout(() => {
-          this.progressBar = 75;
+          this.progressBar = 90;
         }, 75);
 
         await this.$store.dispatch("loadChars");
 
         this.progressBar = 100;
 
-        setTimeout(() => {
-          this.setCharList();
-          this.progressBarShow = false;
-        }, 200);
+        this.setCharList();
+        this.progressBarShow = false;
       },
     },
   };
