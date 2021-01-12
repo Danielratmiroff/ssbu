@@ -1,6 +1,4 @@
-# ssbu
-
-# Project Manager
+# SSBU Mobile App.
 
 ## About
 
