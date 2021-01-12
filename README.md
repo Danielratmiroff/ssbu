@@ -2,10 +2,10 @@
 
 ## About
 
-I'm a huge fan of the video game Super Smash Bros and I found myself &nbsp;
-missing for a place that allowed me to know more about the characters I liked playing,&nbsp;&nbsp;
+I'm a huge fan of the video game Super Smash Bros and I found myself <br />
+missing for a place that allowed me to know more about the characters I liked playing,<br /><br />
 
-That need lead to create this simple and easy to use mobile application. 📱 &nbsp;
+That need lead to create this simple and easy to use mobile application. 📱<br />
 (Which allowed me to check out what are my best changes against different opponents 😄)
 
 ### Link
