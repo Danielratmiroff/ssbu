@@ -1,24 +1,19 @@
 # ssbu
 
-## Project setup
+# Project Manager
+
+## About
+
 ```
-npm install
+I'm a huge fan of the video game Super Smash Bros and I found myself 
+missing for a place that allowed me to know more about the characters I liked playing,
+
+That need lead to creating an easy to use, mobile application. (Which allowed me to
+check out what are my best changes against different opponents)
+
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Link
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[SSBU Mobile Application](https://danielratmiroff.github.io/ssbu/) 
+![alt text](https://q-static.ninox.com/images/redesign-2020/icon-link.svg "SSBU")
