@@ -2,13 +2,11 @@
 
 ## About
 
-```
 I'm a huge fan of the video game Super Smash Bros and I found myself 
 missing for a place that allowed me to know more about the characters I liked playing,
 
 That need lead to create this simple and easy to use mobile application. 📱 
 (Which allowed me to check out what are my best changes against different opponents 😄)
-```
 
 ### Link
 
