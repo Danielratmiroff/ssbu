@@ -9,5 +9,5 @@ that allowed me to check out what are the best picks against different opponents
 
 ### Link
 
-[SSBU Mobile Application](https://danielratmiroff.github.io/ssbu/) 
+[SSBU Mobile Application](https://supersmashhelper.surge.sh) 
 ![alt text](https://q-static.ninox.com/images/redesign-2020/icon-link.svg "SSBU")
