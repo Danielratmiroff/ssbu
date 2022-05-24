@@ -11,7 +11,7 @@ import Vuex from "vuex";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { charsData } from "./chars.js";
-import { listUniqueValue } from "@/components/mixins/listUniqueValue.js";
+import { listUniqueValue } from "../components/mixins/listUniqueValue.js";
 
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);

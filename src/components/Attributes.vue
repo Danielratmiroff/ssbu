@@ -17,7 +17,7 @@
       >
         <div class="flex relative justify-between items-center z-50">
           <router-link :to="{ name: 'Dashboard' }">
-            <img src="@/assets/arrow.svg" class="w-6 absolute sm:hidden" />
+            <img src="../assets/arrow.svg" class="w-6 absolute sm:hidden" />
           </router-link>
 
           <p
@@ -32,7 +32,7 @@
           style="max-height: 250px; object-fit: contain"
         />
         <img
-          src="@/assets/iconbig.png"
+          src="../assets/iconbig.png"
           class="w-full absolute mt-12 top-0 left-0"
         />
       </div>
@@ -93,7 +93,7 @@ import axios from "axios";
 import Counters from "./Counters.vue";
 import Clues from "./Clues.vue";
 import { mapGetters, mapState } from "vuex";
-import { listUniqueValue } from "@/components/mixins/listUniqueValue.js";
+import { listUniqueValue } from "../components/mixins/listUniqueValue.js";
 
 export default {
   name: "Attributes",
@@ -239,7 +239,7 @@ export default {
       }
       const cleanName = elm.toLowerCase().replace(/\s/g, "");
       try {
-        return require(`@/assets/chars/${cleanName}.png`);
+        return require(`../assets/chars/${cleanName}.png`);
       } catch {
         return "";
       }

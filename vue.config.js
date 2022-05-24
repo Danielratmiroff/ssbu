@@ -1,13 +1,9 @@
 module.exports = {
-  chainWebpack: config => {
-    config
-        .plugin('html')
-        .tap(args => {
-            args[0].title = "Super Smash Pros";
-            return args;
-        })
-},
-    publicPath: process.env.NODE_ENV === 'production'
-      ? '/ssbu/'
-      : '/'
-  }
+  chainWebpack: (config) => {
+    config.plugin("html").tap((args) => {
+      args[0].title = "Super Smash Pros";
+      return args;
+    });
+  },
+  publicPath: "/",
+};

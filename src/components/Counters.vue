@@ -70,7 +70,7 @@ export default {
     getImg(name) {
       const cleanName = name.toLowerCase().replace(/\s/g, "");
       try {
-        return require(`@/assets/chars/${cleanName}.png`);
+        return require(`../assets/chars/${cleanName}.png`);
       } catch {
         return "";
       }

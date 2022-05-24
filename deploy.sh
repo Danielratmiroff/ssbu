@@ -4,12 +4,10 @@ set -e
 
 npm run build
 
+cp -r CNAME ./dist
+
 cd dist
 
-git init
-git add -A
-git commit -m 'deploy'
-
-git push -f git@github.com:danielratmiroff/ssbu.git master:gh-pages
+surge
 
 cd -
