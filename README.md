@@ -1,4 +1,4 @@
-# SSBU Mobile App 🎮.
+# Super Smash Bros Ultimate Companion 🎮.
 
 I like video games and I'm a huge fan of Super Smash Bros, thus I decided to create a simple app where I could know more about each character and it had to be mobile-first focus, so that I could check the best picks against different opponents while the game is on 😄
 
