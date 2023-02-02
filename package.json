@@ -20,7 +20,7 @@
     "tailwindcss": "^1.4.6",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
-    "vue-resource": "^1.5.1",
+    "vue-resource": "^1.5.3",
     "vue-router": "^3.3.4",
     "vue-simple-progress": "^1.1.1",
     "vue-tippy": "^4.6.0",
